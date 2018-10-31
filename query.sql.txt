@@ -1,0 +1,38 @@
+create table user
+(
+id IDENTITY,
+fname VARCHAR(60),
+lname VARCHAR(60),
+email VARCHAR(100),
+number VARCHAR(50),
+role VARCHAR(50),
+active BOOLEAN,
+CONSTRAINT pk_user_id PRIMARY KEY(id)
+)
+
+INSERT INTO user(fname,lname,email,number,role,active) VALUES ('William','Rai','william@gmail.com','9841219191','ADMIN',true);
+
+create table Student(
+id IDENTITY,
+fname VARCHAR(60),
+lname VARCHAR(60),
+number VARCHAR(50),
+class int,
+total_present_day int,
+total_absent_day int,
+CONSTRAINT pk_student_id PRIMARY KEY(id),
+)
+
+INSERT INTO student (fname,lname,number,class,total_present_day,total_absent_day) VALUES ('Sheriff','Hussain','9841291010',10,80,5);
+
+
+create table Attendance(
+id IDENTITY,
+date DATETIME ,
+student_id int,
+type tinyint,
+CONSTRAINT pk_attendance_id PRIMARY KEY(id),
+CONSTRAINT fk_attendance_student_id FOREIGN KEY REFERENCES student(id);
+)
+
+INSERT INTO attendance(date,student_id,type) VALUES ('2018-10-29 12:25:05',1,1);
