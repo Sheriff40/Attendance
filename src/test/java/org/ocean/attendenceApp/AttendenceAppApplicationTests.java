@@ -53,7 +53,7 @@ public class AttendenceAppApplicationTests {
 //		assertEquals("failed insert",true, dao.save(std1));
 		
 		
-//		assertEquals("Wrong information","uttsikha",dao.getOne(1).getFname());
+//		assertEquals("Wrong information","uttsikha",dao.getById(1).getFname());
 		
 //		assertEquals("Wrong information",2,dao.findByClassId(8).size());
 		

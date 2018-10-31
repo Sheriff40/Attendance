@@ -51,7 +51,7 @@ public class StudentController {
 	
 	
 	@RequestMapping(value = "/student/{id}/get")
-	
+	@ResponseBody
 	public ModelAndView getByClassId(@PathVariable ("id")int id)
 	{
 		ModelAndView mv = new ModelAndView("main");
