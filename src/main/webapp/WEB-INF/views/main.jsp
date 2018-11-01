@@ -23,16 +23,26 @@
 </head>
 <body>
 	<%@include file="shared/navbar.jsp"%>
+
+
 	<div class="container">
 
 
+		<c:if test="${not empty message}">
+			<div class="alert alert-success">
+				<button class="close" data-dismiss = "alert">&cross;</button>
+					${message}
+			</div>
+		</c:if>
+		`
+
 		<c:if test="${UserClickClass == true}">
-			
+
 			<%@include file="viewClass.jsp"%>
 			<script>
 				window.stdId = '${id}';
 			</script>
-			
+
 		</c:if>
 
 	</div>
@@ -40,7 +50,8 @@
 
 <script type="text/javascript" src="${SITE_URL}/js/code.jquery.com.js"></script>
 <script type="text/javascript" src="${SITE_URL}/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${SITE_URL}/js/dataTables.bootstrap.js"></script>
+<script type="text/javascript"
+	src="${SITE_URL}/js/dataTables.bootstrap.js"></script>
 <script type="text/javascript" src="${SITE_URL}/js/datatables.js"></script>
 <script type="text/javascript" src="${SITE_URL}/js/myApp.js"></script>
 

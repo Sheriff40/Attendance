@@ -6,8 +6,12 @@ import org.ocean.dao.StudentDAO;
 import org.ocean.dto.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,24 +23,21 @@ public class StudentController {
 	public StudentDAO dao;
 	
 	@RequestMapping(value = "/student/add")
-	@ResponseBody
-	public String add()
+	public String add(@ModelAttribute("student")Student std)
 	{
+		
+		String message;
 		try
 		{
-			Student std = new Student();
-			std.setFname("sheriff");
-			std.setLname("hussain");
-			std.setNumber("199191922");
-			std.setTotalAbsentDay(80);
-			std.setTotalPresentDay(5);
-			std.setClassId(8);
 			dao.save(std);
-			return "success";
+			message = "Inserted the data successfully";
+			return "redirect:/home?message="+message;
+			
 		}
 		catch(Exception ex)
 		{
-			return "failure";
+			message = "Could not insert the data ";
+			return "redirect:/home?message="+message;
 		}
 		
 		
@@ -51,14 +52,15 @@ public class StudentController {
 	
 	
 	@RequestMapping(value = "/student/{id}/get")
-	@ResponseBody
-	public ModelAndView getByClassId(@PathVariable ("id")int id)
+
+	public String getByClassId(@PathVariable ("id")int id, Model model)
 	{
-		ModelAndView mv = new ModelAndView("main");
-		mv.addObject("id",id);
-		mv.addObject("title","Class");
-		mv.addObject("UserClickClass",true);
-		return mv;
+		model.addAttribute("id",id);
+		model.addAttribute("title", "Class");
+		model.addAttribute("student", new Student());
+		model.addAttribute("UserClickClass",true);
+	
+		return "main";
 	}
 	
 	
