@@ -1,6 +1,7 @@
 package org.ocean.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.ocean.dao.AttendanceDAO;
@@ -9,7 +10,6 @@ import org.ocean.dto.Attendance;
 import org.ocean.dto.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,18 +62,32 @@ public class AttendenceController {
 	@ResponseBody
 	public String addAttendancePresent(@PathVariable("id") int id,
 			@RequestParam(name = "abs", required = false) Boolean abs) {
+		
+		String message = null;
+		
 		Student std = dao.getById(id);
 		Attendance att = new Attendance();
-		if (abs == true) {
-			att.setStatus(false);
-		} else {
-			att.setStatus(true);
+		
+		LocalDate date1 = LocalDate.parse("2018-11-12");
+		LocalDate date2 = date1.plusDays(1);
+		if(!(attendanceDAO.searchByDateAndStudentId(id, date1, date2)==null))
+		{
+			message = "can't save";
 		}
-		std.setTotalPresentDay(std.getTotalPresentDay() + 1);
-		att.setStudent(std);
-		att.setClassId(std.getClassId());
-		attendanceDAO.save(att);
-		return att.getId() + "";
+		else
+		{
+			if (abs == true) {
+				att.setStatus(false);
+			} else {
+				att.setStatus(true);
+			}
+			std.setTotalPresentDay(std.getTotalPresentDay() + 1);
+			att.setStudent(std);
+			att.setClassId(std.getClassId());
+			attendanceDAO.save(att);
+			message = att.getId() + "";
+		}
+		return message;
 	}
 
 	@PostMapping(value = "/update/attendance/{id}")
@@ -107,5 +121,45 @@ public class AttendenceController {
 		mv.addObject("title","Show Attendance");
 		return mv;
 	}
+	
 
+	@RequestMapping(value = "/test")
+	@ResponseBody
+	public String getatt()
+	{
+		String message;
+		LocalDate date1 = LocalDate.parse("2018-11-14");
+		
+		LocalDate date2 = date1.plusDays(1);
+		if(!(attendanceDAO.searchByDateAndStudentId(2, date1, date2)==null))
+		{
+			message = "can't save";
+		}
+		else
+		{
+			message = "can save";
+		}
+		return message;
+	}
+	
+	
+//	@PostMapping(value = "/add/attendance/{id}")
+//	@ResponseBody
+//	public String addAttendancePresent(@PathVariable("id") int id,
+//			@RequestParam(name = "abs", required = false) Boolean abs) {
+//		Student std = dao.getById(id);
+//		Attendance att = new Attendance();
+//		if (abs == true) {
+//			att.setStatus(false);
+//		} else {
+//			att.setStatus(true);
+//		}
+//		std.setTotalPresentDay(std.getTotalPresentDay() + 1);
+//		att.setStudent(std);
+//		att.setClassId(std.getClassId());
+//		attendanceDAO.save(att);
+//		return att.getId() + "";
+//	}
+	
+	
 }

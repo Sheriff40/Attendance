@@ -270,7 +270,15 @@ $(document)
 						$.post(window.contextRoot+ "/add/attendance/" + row_id +"?abs=false",
 								function(data) 
 								{
-									callback(data);
+									if(data == "can't save")
+										{
+											alert("Could not save data");
+										}
+									else
+										{
+											callback(data);
+										}
+								
 								});
 					}
 					

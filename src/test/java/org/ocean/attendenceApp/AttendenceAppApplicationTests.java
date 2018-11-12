@@ -65,7 +65,7 @@ public class AttendenceAppApplicationTests {
 		//assertEquals("Wrong information",true,dao.updatePresent(false, 1));
 		
 /* For checking the local DATE */		
-		LocalDate date1 = LocalDate.parse("2018-11-10");
+		LocalDate date1 = LocalDate.parse("2018-11-13");
 		System.out.println("this date is -------------");
 		System.out.println(date1);
 		LocalDate date2 = date1.plusDays(1);
@@ -74,7 +74,13 @@ public class AttendenceAppApplicationTests {
 //		
 //		assertEquals("Wrong information",3,Attdao.findByStdClass(8).size());
 		
-		assertEquals("Wrong information",3,Attdao.searchByDateAndId(8,date1,date2).size());
+//		assertEquals("Wrong information",3,Attdao.searchByDateAndId(8,date1,date2).size());
+		
+		/* Checking with student id*/
+		
+		//assertEquals("Wrong information",true,Attdao.searchByDateAndStudentId(1,date1,date2).getStatus());
+		
+//		assertEquals("Wrong information",3,Attdao.searchByDate2().size());
 	}
 	
 
