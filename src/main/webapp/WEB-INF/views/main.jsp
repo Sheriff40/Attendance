@@ -4,6 +4,7 @@
 
 <c:set var="SITE_URL" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html>
+
 <html>
 <head>
 
@@ -18,6 +19,8 @@
 	href="${SITE_URL}/css/dataTables.bootstrap.css" />
 <link rel="stylesheet" type="text/css"
 	href="${SITE_URL}/css/datatables.css" />
+<link rel="stylesheet" type="text/css"
+	href="${SITE_URL}/css/myApp.css" />
 
 
 </head>
@@ -35,7 +38,6 @@
 			</div>
 		</c:if>
 		`
-
 		<c:if test="${UserClickClass == true}">
 
 			<%@include file="viewClass.jsp"%>
@@ -44,9 +46,33 @@
 			</script>
 
 		</c:if>
+		
+		<c:if test="${UserClickAttendance == true}">
+
+			<%@include file="Attendance.jsp"%>
+		
+		</c:if>
+		<c:if test="${UserClickShowAttendance == true}">
+
+			<%@include file="ShowAttendance.jsp"%>
+		
+		</c:if>
+		<c:if test="${UserClickViewStudent == true}">
+
+			<%@include file="ShowStudent.jsp"%>
+		
+		</c:if>
 
 	</div>
+	
+	<div class = "footer">
+		
+		&copy; Mine
+		
+		
+	</div>
 </body>
+
 
 <script type="text/javascript" src="${SITE_URL}/js/code.jquery.com.js"></script>
 <script type="text/javascript" src="${SITE_URL}/js/bootstrap.min.js"></script>
@@ -55,5 +81,6 @@
 <script type="text/javascript" src="${SITE_URL}/js/datatables.js"></script>
 <script type="text/javascript" src="${SITE_URL}/js/myApp.js"></script>
 
+<script type="text/javascript" src="${SITE_URL}/js/jquery.validate.js"></script>
 
 </html>

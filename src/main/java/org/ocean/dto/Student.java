@@ -12,15 +12,24 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String rollNo;
 	private String fname;
 	private String lname;
+	
+	private String fatherName;
+	private String motherName;
 	private String number;
+	private String tempAddress;
+	private String permAddress;
+	private String localGuardian;
+	private String localNumber;
 	@Column(name = "class")
 	private int classId;
+	
 	@Column(name = "total_present_day")
-	private int totalPresentDay;
+	private int totalPresentDay = 0;
 	@Column(name = "total_absent_day")
-	private int totalAbsentDay;
+	private int totalAbsentDay = 0;
 	public int getId() {
 		return id;
 	}
@@ -63,11 +72,64 @@ public class Student {
 	public void setTotalAbsentDay(int totalAbsentDay) {
 		this.totalAbsentDay = totalAbsentDay;
 	}
+	public String getFatherName() {
+		return fatherName;
+	}
+	public void setFatherName(String fatherName) {
+		this.fatherName = fatherName;
+	}
+	public String getMotherName() {
+		return motherName;
+	}
+	public void setMotherName(String motherName) {
+		this.motherName = motherName;
+	}
+	public String getTempAddress() {
+		return tempAddress;
+	}
+	public void setTempAddress(String tempAddress) {
+		this.tempAddress = tempAddress;
+	}
+	public String getPermAddress() {
+		return permAddress;
+	}
+	public void setPermAddress(String permAddress) {
+		this.permAddress = permAddress;
+	}
+	public String getLocalGuardian() {
+		return localGuardian;
+	}
+	public void setLocalGuardian(String localGuardian) {
+		this.localGuardian = localGuardian;
+	}
+	public String getLocalNumber() {
+		return localNumber;
+	}
+	public void setLocalNumber(String localNumber) {
+		this.localNumber = localNumber;
+	}
+	
+	
+	
+	public String getRollNo() {
+		return rollNo;
+	}
+	public void setRollNo(String rollNo) {
+		this.rollNo = rollNo;
+	}
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", fname=" + fname + ", lname=" + lname + ", number=" + number + ", classId="
-				+ classId + ", totalPresentDay=" + totalPresentDay + ", totalAbsentDay=" + totalAbsentDay + "]";
+		return "Student [id=" + id + ", rollNo=" + rollNo + ", fname=" + fname + ", lname=" + lname + ", fatherName="
+				+ fatherName + ", motherName=" + motherName + ", number=" + number + ", tempAddress=" + tempAddress
+				+ ", permAddress=" + permAddress + ", localGuardian=" + localGuardian + ", localNumber=" + localNumber
+				+ ", classId=" + classId + ", totalPresentDay=" + totalPresentDay + ", totalAbsentDay=" + totalAbsentDay
+				+ "]";
 	}
+	
+	
+	
+	
+	
 	
 	
 }

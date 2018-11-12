@@ -1,0 +1,22 @@
+.error-class
+{
+	color : red;
+}
+
+
+
+
+.footer
+{
+	margin-top: 20px;
+	height: 80px;
+	color:white;
+	background: black;
+	text-align: center;
+	font-size : 20px;
+	
+	position: relative;
+	width : 100%;
+	
+	
+}

@@ -1,13 +1,13 @@
 package org.ocean.dto;
 
-import java.sql.Timestamp;
-import java.util.List;
+import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Attendance {
@@ -16,43 +16,76 @@ public class Attendance {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private Timestamp date;
+	private LocalDate date;
 	
-	@OneToMany
-	private List<Student> student;
+	@OneToOne
+	private Student student;
 	
-	private int type;
+	@Column(name = "class_id")
+	private int classId;
+	
+	private Boolean status;
+	 
+	
+	public Attendance()
+	{
+		this.date = LocalDate.now();
+	}
+	
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Timestamp getDate() {
+	
+	
+	
+	public int getClassId() {
+		return classId;
+	}
+
+
+	public void setClassId(int classId) {
+		this.classId = classId;
+	}
+
+
+	public LocalDate getDate() {
 		return date;
 	}
-	public void setDate(Timestamp date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	
-	public List<Student> getStudent() {
+	public Student getStudent() {
 		return student;
 	}
-	public void setStudent(List<Student> student) {
+
+	public void setStudent(Student student) {
 		this.student = student;
 	}
-	public int getType() {
-		return type;
+
+	public Boolean getStatus() {
+		return status;
 	}
-	public void setType(int type) {
-		this.type = type;
+
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
-		return "Attendance [id=" + id + ", date=" + date + ", student=" + student + ", type=" + type + "]";
+		return "Attendance [id=" + id + ", date=" + date + ", student=" + student + ", classId=" + classId + ", status="
+				+ status + "]";
 	}
+	
+	
+	
+	
+	
+
 	
 	
 	

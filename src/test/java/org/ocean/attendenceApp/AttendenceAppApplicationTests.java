@@ -5,11 +5,13 @@ package org.ocean.attendenceApp;
 
 import static org.junit.Assert.assertEquals;
 
+import java.time.LocalDate;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ocean.dao.AttendanceDAO;
 import org.ocean.dao.StudentDAO;
-import org.ocean.dto.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -21,6 +23,9 @@ public class AttendenceAppApplicationTests {
 	
 	@Autowired
 	private StudentDAO dao;
+	
+	@Autowired
+	private AttendanceDAO Attdao;
 	
 	@BeforeClass
 	public static void init()
@@ -56,8 +61,20 @@ public class AttendenceAppApplicationTests {
 //		assertEquals("Wrong information","uttsikha",dao.getById(1).getFname());
 		
 //		assertEquals("Wrong information",2,dao.findByClassId(8).size());
+
+		//assertEquals("Wrong information",true,dao.updatePresent(false, 1));
 		
+/* For checking the local DATE */		
+		LocalDate date1 = LocalDate.parse("2018-11-10");
+		System.out.println("this date is -------------");
+		System.out.println(date1);
+		LocalDate date2 = date1.plusDays(1);
+		System.out.println(date2);
+		//assertEquals("Wrong information",3,Attdao.searchDate(date1,date2).size());
+//		
+//		assertEquals("Wrong information",3,Attdao.findByStdClass(8).size());
 		
+		assertEquals("Wrong information",3,Attdao.searchByDateAndId(8,date1,date2).size());
 	}
 	
 

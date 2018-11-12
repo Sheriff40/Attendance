@@ -31,6 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  				.formLogin() // enable form based log in
  				// set permitAll for all URLs associated with Form Login
  				.permitAll();
+ 		http.csrf().disable();
  	}
 
  	@Override

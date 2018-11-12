@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -62,6 +63,36 @@ public class StudentController {
 	
 		return "main";
 	}
+	
+	@RequestMapping(value = "/view/student/{id}")
+	@ResponseBody
+	public ModelAndView get(@PathVariable("id")int id)
+	
+	{
+		
+		Student student = dao.getById(id);
+		ModelAndView mv = new ModelAndView("main");
+		
+		mv.addObject("title","View Student");
+		mv.addObject("UserClickViewStudent", true);
+		mv.addObject("student", student);
+		return mv;
+	}
+	
+//	@RequestMapping(value = "/student/{id}/attendance", method = RequestMethod.POST)
+//	@ResponseBody
+//	public String activateAttendance(@PathVariable ("id")int id)
+//	{
+//		
+//		Student std = dao.getById(id);
+//		if(std == null)
+//		{
+//			return "Student no found";
+//		}
+//		Boolean isActive = std.getPresent();
+//		dao.updatePresent(!(std.getPresent()), id);
+//		return (isActive)? std.getFname() + " has been set to absent":std.getFname() + " has been set to present";
+//	}
 	
 	
 }
