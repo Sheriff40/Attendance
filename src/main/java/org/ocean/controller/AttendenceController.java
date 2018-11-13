@@ -72,7 +72,7 @@ public class AttendenceController {
 		LocalDate date2 = date1.plusDays(1);
 		if(!(attendanceDAO.searchByDateAndStudentId(id, date1, date2)==null))
 		{
-			message = "can't save";
+			message = "Attendance already exists";
 		}
 		else
 		{

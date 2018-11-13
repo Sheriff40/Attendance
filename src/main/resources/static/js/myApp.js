@@ -96,10 +96,11 @@ $(document)
 																setToPresent(row.id,function(data)
 																		{
 																			btnPresent.attr('attId',data);
-																			alert(data);
+																			alert("This attendance has been saved");
+																			btnPresent.attr('data-number',1); 
+																			btnPresent.text('Absent');
 																		});
-																btnPresent.attr('data-number',1); 
-																btnPresent.text('Absent');
+															
 																
 															}
 														else if(btnPresent.attr('data-number') == 1)
@@ -270,9 +271,10 @@ $(document)
 						$.post(window.contextRoot+ "/add/attendance/" + row_id +"?abs=false",
 								function(data) 
 								{
-									if(data == "can't save")
+									if(typeof data === 'string')
 										{
-											alert("Could not save data");
+											alert("Could not save the attendance, attendance for this date and class already exists");
+											return ;
 										}
 									else
 										{

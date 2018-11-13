@@ -24,6 +24,8 @@
 		</table>
 		
 	
-			
-		<a type="Submit" href = "${SITE_URL}/home" class="btn btn-success">Save</a>
+		<div class="text-center">
+			<a type="Submit" href = "${SITE_URL}/home" class="btn btn-success">Edit??</a>
+		
+		</div>
 		
