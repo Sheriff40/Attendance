@@ -2,11 +2,11 @@ package org.ocean.controller;
 
 import java.time.LocalDate;
 
-
 import org.ocean.dao.AttendanceDAO;
 import org.ocean.dao.StudentDAO;
 import org.ocean.dto.Attendance;
 import org.ocean.dto.Student;
+import org.ocean.dto.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -127,11 +127,13 @@ public class AttendenceController {
 	
 
 	
-	@RequestMapping(value = "/take/attendance/teacher")
+	@RequestMapping(value = "/show/teacher")
 	public ModelAndView attendanceTeacher()
 	{
+		Teacher teacher = new Teacher();
 		ModelAndView mv = new ModelAndView("main");
 		mv.addObject("UserClickTeacherAttendance", true);
+		mv.addObject("teacher", teacher);
 		mv.addObject("title", "Teacher");
 		return mv;
 	}

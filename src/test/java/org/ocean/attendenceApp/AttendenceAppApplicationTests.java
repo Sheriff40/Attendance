@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ocean.dao.AttendanceDAO;
 import org.ocean.dao.StudentDAO;
+import org.ocean.dao.TeacherAttendanceDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -26,6 +27,10 @@ public class AttendenceAppApplicationTests {
 	
 	@Autowired
 	private AttendanceDAO Attdao;
+	
+	@Autowired
+	private TeacherAttendanceDAO taDAO;
+	
 	
 	@BeforeClass
 	public static void init()
@@ -65,13 +70,14 @@ public class AttendenceAppApplicationTests {
 		//assertEquals("Wrong information",true,dao.updatePresent(false, 1));
 		
 /* For checking the local DATE */		
-		LocalDate date1 = LocalDate.parse("2018-11-13");
+		LocalDate date1 = LocalDate.parse("2018-11-14");
 		System.out.println("this date is -------------");
 		System.out.println(date1);
 		LocalDate date2 = date1.plusDays(1);
 		System.out.println(date2);
+		
 		//assertEquals("Wrong information",3,Attdao.searchDate(date1,date2).size());
-//		
+		
 //		assertEquals("Wrong information",3,Attdao.findByStdClass(8).size());
 		
 //		assertEquals("Wrong information",3,Attdao.searchByDateAndId(8,date1,date2).size());
@@ -81,6 +87,8 @@ public class AttendenceAppApplicationTests {
 		//assertEquals("Wrong information",true,Attdao.searchByDateAndStudentId(1,date1,date2).getStatus());
 		
 //		assertEquals("Wrong information",3,Attdao.searchByDate2().size());
+		
+		assertEquals("Wrong information",false,taDAO.getTeacherAttendanceList(2,date1,date2).getStatus());
 	}
 	
 

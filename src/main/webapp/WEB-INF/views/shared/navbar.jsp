@@ -86,7 +86,7 @@
 						});
 					});
 				</script></li>
-			<li class="nav-item"><a class="nav-link" href = "${SITE_URL}/take/attendance/teacher" id="att_teacher">Teacher Attendance</a></li>
+			<li class="nav-item"><a class="nav-link" href = "${SITE_URL}/show/teacher" id="att_teacher">Teacher Attendance</a></li>
 
 		</ul>
 

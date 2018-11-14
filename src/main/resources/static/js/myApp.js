@@ -4,9 +4,8 @@ $(document)
 
 					var menu = window.menu;
 
-					switch (menu) 
-					{
-					
+					switch (menu) {
+
 					case 'attendance': {
 						$('#att_attendance').addClass('active');
 						break;
@@ -18,15 +17,14 @@ $(document)
 					case 'Teacher': {
 						$('#att_teacher').addClass('active');
 						break;
-						}
+					}
 
 					default: {
 						$('#home').addClass('active');
 						break;
-						}
-
 					}
 
+					}
 
 					var json = window.contextRoot + '/json/' + window.stdId
 							+ '/student';
@@ -436,4 +434,202 @@ $(document)
 										});
 					}
 
+					/* Validation for teacher Form */
+
+					var teacherForm = $("#teacherForm");
+					if (teacherForm.length > 0) {
+						teacherForm.validate({
+
+							rules : {
+								staffId : {
+									required : true,
+									minlength : 2
+								},
+								name : {
+									required : true,
+									minlength : 3
+								},
+								address : {
+									required : true,
+									minlength : 3
+								},
+								number : {
+									required : true,
+									maxlength : 10,
+									minlength : 7
+								},
+								subject : {
+									required : true,
+									minlength : 3
+								}
+							},
+							messages : {
+								staffId : {
+									required : "*Required field",
+									minlength : "The minimum length is 2"
+								},
+								name : {
+									required : "*Required field",
+									minlength : "The minimum length is 3"
+								},
+								address : {
+									required : "*Required field",
+									minlength : "The minimum length is 3"
+								},
+								number : {
+									required : "*Required field",
+									minlength : "The minimum length is 10"
+								},
+								subject : {
+									required : "*Required field",
+									minlength : "The minimum length is 3"
+								}
+							},
+							errorClass : 'error-class'
+						});
+					}
+
+					var teacherTable = $('#teacherTable');
+					var url = window.contextRoot + "/json/get/teachers";
+					if (teacherTable.length > 0) {
+						teacherTable.DataTable({
+
+							ajax : {
+								url : url,
+								dataSrc : ''
+							},
+							columns : [
+
+							{
+								data : 'staffId'
+							},
+							{
+								data : 'name'
+							},
+							{
+								data : 'address'
+							},
+							{
+								data : 'number'
+							},
+							{
+								data : 'subject'
+							}
+							
+							]
+
+						});
+					}
+					
+					var attendanceTeacher = $("#teacherAttendance");
+					if(attendanceTeacher.length > 0)
+						{
+						var url = window.contextRoot + "/json/get/teachers";
+							attendanceTeacher.DataTable({
+								
+								ajax:
+									{
+										url : url,
+										dataSrc : ''
+									},
+							columns :
+									[
+										{
+											data : 'staffId'
+										},
+										{
+											data : 'name'
+										},
+										{
+											
+											mRender : function(data,type,row){
+														
+													var str = '';
+													str  += '<button class="fa fa-check" btn_attid = "0" id = "presentTeacher_'+row.id+'">Present </button> &nbsp';
+													
+													str += '<button class="fa fa-times" btn_attid = "0" id = "absentTeacher_'+row.id+'">Absent </button> &nbsp';
+													str += '<button class="fa fa-times" btn_attid = "0" id = "editTeacher_'+row.id+'">Edit </button>';
+													
+												
+													var presentTeacher = $('#presentTeacher_' + row.id);
+													var absTeacher = $('#absentTeacher_' + row.id);
+													var editTeacher = $('#editTeacher_' + row.id);
+													
+													
+													presentTeacher.on('click',function()
+															{
+																teacherPresent(row.id,function(data)
+																		{
+																			presentTeacher.attr("btn_attid",data);
+																			absTeacher.prop("disabled",true);
+																			presentTeacher.prop("disabled",true);
+																		});
+																
+															});
+														
+													
+													absTeacher.on('click',function()
+																{
+																		teacherAbsent(row.id,function(data)
+																				{
+																					absTeacher.attr("btn_attid",data);
+																					absTeacher.prop("disabled",true);
+																					presentTeacher.prop("disabled",true);
+																				});
+																});
+														
+													editTeacher.on('click',function()
+															{
+																alert ("edited");
+															});
+													
+													
+													
+													return str;
+											}
+										}
+									]
+								
+							});
+							
+							function teacherPresent(taId,callback)
+							{
+								var url = window.contextRoot + "/add/teacher/attendance/" + taId + "?abs=false";
+								$.post(url,{},function(data){
+									if (data == "error")
+										{
+											alert ("The attendance for the date exists");
+											return null;
+										}
+									else
+										{
+											callback(data);
+										}
+									
+								})
+							}
+							
+							function teacherAbsent(taId,callback)
+							{
+								var url = window.contextRoot + "/add/teacher/attendance/" + taId + "?abs=true";
+								$.post(url,{},function(data){
+									if (data == "error")
+									{
+										alert ("The attendance for the date exists");
+										return null;
+									}
+									else
+										{
+											callback(data);
+										}
+									
+								})
+							}
+							
+						}
+
+					
+					
+					
+					
 				});

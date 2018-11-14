@@ -16,7 +16,7 @@ public class Teacher {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private int staffId;
+	private String staffId;
 	private String name;
 	private String address;
 	private String number;
@@ -27,10 +27,11 @@ public class Teacher {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getStaffId() {
+	
+	public String getStaffId() {
 		return staffId;
 	}
-	public void setStaffId(int staffId) {
+	public void setStaffId(String staffId) {
 		this.staffId = staffId;
 	}
 	public String getName() {
@@ -62,6 +63,8 @@ public class Teacher {
 		return "Teacher [id=" + id + ", staffId=" + staffId + ", name=" + name + ", address=" + address + ", number="
 				+ number + ", subject=" + subject + "]";
 	}
+	
+	
 	
 	
 }

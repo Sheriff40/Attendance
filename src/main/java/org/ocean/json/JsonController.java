@@ -4,8 +4,9 @@ package org.ocean.json;
 import java.util.List;
 
 import org.ocean.dao.StudentDAO;
-
+import org.ocean.dao.TeacherDAO;
 import org.ocean.dto.Student;
+import org.ocean.dto.Teacher;
 import org.ocean.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ public class JsonController {
 	@Autowired
 	private StudentDAO dao;
 	
+	@Autowired
+	private TeacherDAO teacherDAO;
+	
 	@RequestMapping("/{id}/student")
 	public List<Student> studenyByClass(@PathVariable ("id") int id)
 	{
@@ -35,5 +39,11 @@ public class JsonController {
 	{
 		
 		return dao.findByClassId(id);
+	}
+	
+	@GetMapping("/get/teachers")
+	public List<Teacher> getTeachers()
+	{
+		return teacherDAO.findAll();
 	}
 }
