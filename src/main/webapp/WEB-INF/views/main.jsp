@@ -10,6 +10,7 @@
 
 <script>
 	window.contextRoot = '${SITE_URL}';
+	window.menu = '${title}';
 </script>
 <meta charset="ISO-8859-1">
 <title>Attendance - ${title}</title>
@@ -21,7 +22,7 @@
 	href="${SITE_URL}/css/datatables.css" />
 <link rel="stylesheet" type="text/css"
 	href="${SITE_URL}/css/myApp.css" />
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 </head>
 <body>
@@ -33,7 +34,7 @@
 
 		<c:if test="${not empty message}">
 			<div class="alert alert-success">
-				<button class="close" data-dismiss = "alert">&cross;</button>
+				<button class="close" data-dismiss = "alert"> &cross; </button>
 					${message}
 			</div>
 		</c:if>

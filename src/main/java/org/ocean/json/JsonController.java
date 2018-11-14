@@ -1,11 +1,10 @@
 package org.ocean.json;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.ocean.dao.StudentDAO;
-import org.ocean.dto.Attendance;
+
 import org.ocean.dto.Student;
 import org.ocean.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;

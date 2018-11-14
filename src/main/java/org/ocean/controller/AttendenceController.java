@@ -1,8 +1,7 @@
 package org.ocean.controller;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import org.ocean.dao.AttendanceDAO;
 import org.ocean.dao.StudentDAO;
@@ -68,11 +67,11 @@ public class AttendenceController {
 		Student std = dao.getById(id);
 		Attendance att = new Attendance();
 		
-		LocalDate date1 = LocalDate.parse("2018-11-12");
+		LocalDate date1 = LocalDate.parse("2018-11-15");
 		LocalDate date2 = date1.plusDays(1);
 		if(!(attendanceDAO.searchByDateAndStudentId(id, date1, date2)==null))
 		{
-			message = "Attendance already exists";
+			message = "error";
 		}
 		else
 		{
@@ -82,6 +81,7 @@ public class AttendenceController {
 				att.setStatus(true);
 			}
 			std.setTotalPresentDay(std.getTotalPresentDay() + 1);
+			att.setDate(date1);
 			att.setStudent(std);
 			att.setClassId(std.getClassId());
 			attendanceDAO.save(att);
@@ -93,22 +93,25 @@ public class AttendenceController {
 	@PostMapping(value = "/update/attendance/{id}")
 	@ResponseBody
 	public String updateAttendanceAbsent(@PathVariable("id") int attId) {
+		String message = null;
 		Attendance att = attendanceDAO.findById(attId).orElse(new Attendance());
 		Student std = att.getStudent();
 		if (att.getStatus() == true) {
 			std.setTotalPresentDay(std.getTotalPresentDay() - 1);
 			std.setTotalAbsentDay(std.getTotalAbsentDay() + 1);
+			message = "absent";
 		} else {
 			std.setTotalPresentDay(std.getTotalPresentDay() + 1);
 			std.setTotalAbsentDay(std.getTotalAbsentDay() - 1);
+			message = "present";
 		}
 		att.setStatus(!(att.getStatus()));
 		attendanceDAO.save(att);
-		return std.getTotalPresentDay() + "";
+		return message;
 	}
 
 	@RequestMapping(value = "/show/attendace")
-	
+	@ResponseBody
 	public ModelAndView getAll(@RequestParam("year")int year,@RequestParam("month")int month,
 			@RequestParam("day")int day , @RequestParam("classId")int id)
 	{
@@ -123,43 +126,15 @@ public class AttendenceController {
 	}
 	
 
-	@RequestMapping(value = "/test")
-	@ResponseBody
-	public String getatt()
+	
+	@RequestMapping(value = "/take/attendance/teacher")
+	public ModelAndView attendanceTeacher()
 	{
-		String message;
-		LocalDate date1 = LocalDate.parse("2018-11-14");
-		
-		LocalDate date2 = date1.plusDays(1);
-		if(!(attendanceDAO.searchByDateAndStudentId(2, date1, date2)==null))
-		{
-			message = "can't save";
-		}
-		else
-		{
-			message = "can save";
-		}
-		return message;
+		ModelAndView mv = new ModelAndView("main");
+		mv.addObject("UserClickTeacherAttendance", true);
+		mv.addObject("title", "Teacher");
+		return mv;
 	}
-	
-	
-//	@PostMapping(value = "/add/attendance/{id}")
-//	@ResponseBody
-//	public String addAttendancePresent(@PathVariable("id") int id,
-//			@RequestParam(name = "abs", required = false) Boolean abs) {
-//		Student std = dao.getById(id);
-//		Attendance att = new Attendance();
-//		if (abs == true) {
-//			att.setStatus(false);
-//		} else {
-//			att.setStatus(true);
-//		}
-//		std.setTotalPresentDay(std.getTotalPresentDay() + 1);
-//		att.setStudent(std);
-//		att.setClassId(std.getClassId());
-//		attendanceDAO.save(att);
-//		return att.getId() + "";
-//	}
-	
+
 	
 }

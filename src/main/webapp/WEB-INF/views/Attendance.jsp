@@ -24,8 +24,5 @@
 		</table>
 		
 	
-		<div class="text-center">
-			<a type="Submit" href = "${SITE_URL}/home" class="btn btn-success">Edit??</a>
 		
-		</div>
 		

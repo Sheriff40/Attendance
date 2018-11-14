@@ -13,14 +13,14 @@
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link"
-				href="${SITE_URL}/home">Home <span class="sr-only">(current)</span>
+			<li class="nav-item "><a class="nav-link"
+				href="${SITE_URL}/home" id = "home" >Home <span class="sr-only">(current)</span>
 			</a></li>
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="navbar1" role="button"
+			<li class="nav-item dropdown" id = "att_attendance"><a
+				class="nav-link dropdown-toggle" href="#" id="att_attendance" role="button"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Attendance
 			</a>
-				<div class="dropdown-menu">
+				<div class="dropdown-menu" >
 					<a class="dropdown-item" href="${SITE_URL}/attendance/take/8">Class
 						8</a> <a class="dropdown-item" href="${SITE_URL}/attendance/take/9">Class
 						9</a> <a class="dropdown-item" href="${SITE_URL}/attendance/take/10">Class
@@ -28,7 +28,7 @@
 				</div></li>
 
 
-
+			
 
 			<li class="nav-item"><a class="nav-link"
 				href="javascript:void(0)" id="searchBtn">Search</a>
@@ -62,7 +62,7 @@
 									</div>
 									<div class="form-group">
 									
-									<select name = 'classId' class = "form-control">
+									<select name = 'classId' class = "form-control" >
 										<option value = '8'>Class 8 </option>
 										<option value = '9'>Class 9 </option>
 										<option value = '10'>Class 10 </option>
@@ -79,7 +79,6 @@
 					</div>
 				</div> <script type="text/javascript">
 					$(document).ready(function() {
-
 						var searchBtn = $('#searchBtn');
 						var exampleModal = $('#exampleModal');
 						searchBtn.on('click', function() {
@@ -87,7 +86,7 @@
 						});
 					});
 				</script></li>
-
+			<li class="nav-item"><a class="nav-link" href = "${SITE_URL}/take/attendance/teacher" id="att_teacher">Teacher Attendance</a></li>
 
 		</ul>
 
@@ -98,7 +97,7 @@
 		<ul class="navbar-nav pull right">
 
 			<li class="nav-item dropdown pull-right"><a
-				class="nav-link dropdown-toggle" href="#" id="navbar1" role="button"
+				class="nav-link dropdown-toggle" href="#" id="att_class" role="button"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Class </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">

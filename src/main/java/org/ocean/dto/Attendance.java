@@ -29,7 +29,7 @@ public class Attendance {
 	
 	public Attendance()
 	{
-		this.date = LocalDate.now();
+		//this.date = LocalDate.now();
 	}
 	
 	
