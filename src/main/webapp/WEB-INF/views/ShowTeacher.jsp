@@ -1,7 +1,7 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
 <div class="text-right">
-	<button class = "btn btn-primary" style = "border-radius:20px;" id="add_teacher">Add Teacher</button>
+	<button class = "btn btn-primary fa fa-user-plus"  style = "border-radius:20px;" id="add_teacher"> Add Teacher</button>
 </div>
 
 <div class="row">
@@ -91,6 +91,7 @@
       					<label class="label-control">Subject</label>
       					<sf:input path = 'subject' type = "text" class="form-control" />
       				</div>
+      				<sf:input type = "hidden" path="id" value = "0"/>
       				<div class = "form-group">
       					<button type = "submit" value = "submit" class="btn btn-success btn-sm">Submit</button>
       				</div>
@@ -114,6 +115,7 @@
 		<th>Address</th>
 		<th>Number</th>
 		<th>Subject</th>
+		<th>Actions</th>
 		</tr>
 	</thead>	
 </table>

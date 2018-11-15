@@ -38,7 +38,7 @@
 					${message}
 			</div>
 		</c:if>
-		`
+		
 		<c:if test="${UserClickClass == true}">
 
 			<%@include file="viewClass.jsp"%>
@@ -75,8 +75,16 @@
 		</c:if>
 		<c:if test="${UserClickSearchTeacherAttendance == true}">
 
-			<%@include file="EditTeacher.jsp"%>
+			<%@include file="EditTeacherAttendance.jsp"%>
 		
+		</c:if>
+		
+		<c:if test = "${EditStudentAttendance == true }">
+			<%@include file="EditStudent.jsp"%>
+		</c:if>
+		
+		<c:if test = "${UserClickTeacherEdit == true }">
+			<%@include file="EditTeacher.jsp"%>
 		</c:if>
 		
 

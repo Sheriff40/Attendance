@@ -7,7 +7,7 @@ import org.ocean.dto.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +30,9 @@ public class StudentController {
 		try
 		{
 			dao.save(std);
+			
 			message = "Inserted the data successfully";
-			return "redirect:/home?message="+message;
+			return "redirect:/admin/student/"+std.getClassId()+"/get";
 			
 		}
 		catch(Exception ex)
@@ -78,20 +79,18 @@ public class StudentController {
 		return mv;
 	}
 	
-//	@RequestMapping(value = "/student/{id}/attendance", method = RequestMethod.POST)
-//	@ResponseBody
-//	public String activateAttendance(@PathVariable ("id")int id)
-//	{
-//		
-//		Student std = dao.getById(id);
-//		if(std == null)
-//		{
-//			return "Student no found";
-//		}
-//		Boolean isActive = std.getPresent();
-//		dao.updatePresent(!(std.getPresent()), id);
-//		return (isActive)? std.getFname() + " has been set to absent":std.getFname() + " has been set to present";
-//	}
+	@RequestMapping(value = "/edit/student/{id}")
+	public ModelAndView editStudent(@PathVariable("id")int id,Model model)
+	
+	{
+		
+		Student student = dao.getById(id);
+		ModelAndView mv = new ModelAndView("main");
+		mv.addObject("student", student);
+		mv.addObject("title", "Class");
+		mv.addObject("EditStudentAttendance",true);
+		return mv;
+	}
 	
 	
 }

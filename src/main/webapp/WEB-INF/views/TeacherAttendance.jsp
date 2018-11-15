@@ -1,6 +1,6 @@
 
 
-<table id = "teacherAttendance">
+<table class="table table-bordered" id = "teacherAttendance">
 	<thead>
 		<tr>
 

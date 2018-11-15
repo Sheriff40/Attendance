@@ -13,10 +13,10 @@
 				<td>
 					<c:choose>
 					 	<c:when test="${att.status==true}">
-					 		<button class = "btn-success disabled" id = "btn_${att.id}">Present</button>
+					 		<button class = "btn-success disabled" style = "border-radius:20px" id = "btn_${att.id}">Present</button>
 					 	</c:when>
 					 	<c:otherwise >
-					 		<button class = "btn-danger disabled" id = "btn_${att.id}">Absent</button>
+					 		<button class = "btn-danger disabled" style = "border-radius:20px" id = "btn_${att.id}">Absent</button>
 					 	</c:otherwise>
 					</c:choose>
 				
@@ -49,8 +49,7 @@
 											}
 										
 										
-									})
-									
+									})		
 						});
 						
 					</script>

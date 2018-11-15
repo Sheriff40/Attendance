@@ -110,7 +110,6 @@ public class TeacherController {
 			message = "absent";
 		}
 		return message;
-		
 	}
 	
 	@PostMapping(value = "/search/teacher/attendance")
@@ -126,4 +125,18 @@ public class TeacherController {
 		mv.addObject("teachers",taDAO.getTeacherAttendanceFromDate(date1, date2));
 		return mv;
 	}
+	
+	@RequestMapping(value = "/edit/teacher/{id}")
+	
+	public ModelAndView editAttendance(@PathVariable ("id") int id)
+	{
+		
+		Teacher teacher = teacherDAO.getById(id);
+		ModelAndView mv = new ModelAndView("main");
+		mv.addObject("title", "Teacher");
+		mv.addObject("UserClickTeacherEdit", true);
+		mv.addObject("teacher", teacher);
+		return mv;
+	}
+	
 }

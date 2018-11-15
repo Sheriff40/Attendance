@@ -2,8 +2,8 @@
 
 <!-- Button trigger modal -->
 <div class="text-right">
-	<button type="button" class=" btn btn-success btn-xs "
-		data-toggle="modal" data-target="#myModal">Add Student</button>
+	<button type="button" class=" btn btn-danger fa fa-user-plus "
+		data-toggle="modal" style = "border-radius:10px;" data-target="#myModal">Add Student</button>
 
 </div>
 
@@ -67,6 +67,7 @@
 						<label class="label-control">Class</label>
 						<sf:input type="number" path="classId" class="form-control" value = "${id}"/>
 					</div>
+					<sf:input type = "hidden" path = "id" value = "0"/>
 					<div class="form-group">
 						<button type="submit" class="btn btn-danger btn-md">Save</button>
 						
@@ -86,12 +87,12 @@
 <br>
 <hr>
 <table class="table table-striped" id="viewClass">
-	<thead>
+	<thead class="thead-dark">
 		<tr>
 			<th>Roll No</th>
 			<th>Name</th>
 			<th>Address</th>
-			<th>Action</th>
+			<th>Actions</th>
 			
 		</tr>
 	</thead>

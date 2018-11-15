@@ -60,11 +60,25 @@ $(document)
 													var link = window.contextRoot
 															+ "/view/student"
 															+ data;
-													str += '<a class = "btn btn-danger" href= " '
-															+ window.contextRoot
-															+ '/admin/view/student/'
-															+ data
-															+ '  " >View </a> ';
+													
+													str += '<a class = "btn fa fa-eye "  style = "color:black;font-size:18px;" href= " '
+														+ window.contextRoot
+														+ '/admin/view/student/'
+														+ data
+														+ '  " ></a> ';
+													
+													
+													str += '<a class = "btn fa fa-trash-alt" style = "color:green;font-size:18px;" href= " '
+														+ window.contextRoot
+														+ '/admin/delete/student/'
+														+ data
+														+ '  " > </a> ';
+													
+													str += '<a class = "btn fa fa-user-edit" style = "color:purple;font-size:18px;" href= " '
+														+ window.contextRoot
+														+ '/admin/edit/student/'
+														+ data
+														+ '  " > </a>  ';
 													return str;
 
 												}
@@ -174,37 +188,11 @@ $(document)
 
 																		}
 
-																		// else
-																		// if(btnPresent.attr('data-number')
-																		// == 1)
-																		// {
-																		// updateAttendance(btnPresent.attr('attId'),function(data)
-																		// {
-																		// alert(data);
-																		// });
-																		// btnPresent.attr('data-number',2);
-																		// btnPresent.text('Present');
-																		//																	
-																		// }
-																		// else
-																		// if(btnPresent.attr('data-number')
-																		// == 2)
-																		// {
-																		// updateAttendance(btnPresent.attr('attId'),function(data)
-																		// {
-																		// alert(data);
-																		// });
-																		// btnPresent.attr('data-number',1);
-																		// btnPresent.text('Absent');
-																		//															
-																		// }
+																	
 
 																	})
 
-													/*
-													 * When ABSENT button is
-													 * clicked
-													 */
+													/* When ABSENT button is clicked */
 
 													btnAbsent
 															.on(
@@ -514,6 +502,16 @@ $(document)
 							},
 							{
 								data : 'subject'
+							},
+							{
+								data: 'id',
+								mRender : function(data,type,row)
+								{
+									var str = '';
+									str += "<a class = 'btn fa fa-trash-alt' href = '"+window.contextRoot+ "/delete/teacher/" + data +"' style = 'font-size:18px;border-radius:10px;color:green;'></a> ";
+									str += "<a class = 'btn fa fa-user-edit' href = '"+window.contextRoot+ "/edit/teacher/" + data +"' style = 'font-size:18px;border-radius:10px;color:purple;'></a> ";
+									return str;
+								}
 							}
 							
 							]
