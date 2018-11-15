@@ -1,3 +1,5 @@
+
+
 <table id = "teacherAttendance">
 	<thead>
 		<tr>

@@ -17,4 +17,8 @@ public interface TeacherAttendanceDAO extends JpaRepository<TeacherAttendance, I
 
 	@Query(value = "SELECT * FROM Teacher_Attendance WHERE teacher_id = ?1 AND date >= ?2 AND date < ?3", nativeQuery = true)
 	public TeacherAttendance getTeacherAttendanceList(int id, LocalDate date1, LocalDate date2);
+	
+	@Query(value = "SELECT * FROM Teacher_Attendance WHERE date >= ?1 AND date < ?2", nativeQuery = true)
+	public List<TeacherAttendance> getTeacherAttendanceFromDate(LocalDate date1, LocalDate date2);
+
 }

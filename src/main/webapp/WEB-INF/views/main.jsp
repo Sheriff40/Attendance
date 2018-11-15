@@ -73,7 +73,11 @@
 			<%@include file="TeacherAttendance.jsp"%>
 		
 		</c:if>
+		<c:if test="${UserClickSearchTeacherAttendance == true}">
+
+			<%@include file="EditTeacher.jsp"%>
 		
+		</c:if>
 		
 
 	</div>

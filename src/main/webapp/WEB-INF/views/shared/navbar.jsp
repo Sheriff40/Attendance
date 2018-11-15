@@ -46,7 +46,8 @@
 								</button>
 							</div>
 							<div class="modal-body">
-
+								
+								
 								<form class='form-horizontal' action = "${SITE_URL}/show/attendace">
 									<div class="form-group">
 										<input class= "form-control" type='text' name = 'year' 
@@ -72,6 +73,8 @@
 									
 								
 								</form>
+								
+								
 
 							</div>
 							

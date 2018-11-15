@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -90,5 +91,39 @@ public class TeacherController {
 		
 		 return message;
 		
+	}
+	
+	@RequestMapping(value = "/update/teacher/attendance/{id}")
+	@ResponseBody
+	public String updateAttendance(@PathVariable ("id") int id)
+	{
+		String message = "";
+		TeacherAttendance ta = taDAO.findById(id).orElse(new TeacherAttendance());
+		ta.setStatus(!ta.getStatus());
+		taDAO.save(ta);
+		if(ta.getStatus() == true)
+		{
+			message = "present";
+		}
+		else
+		{
+			message = "absent";
+		}
+		return message;
+		
+	}
+	
+	@PostMapping(value = "/search/teacher/attendance")
+	@ResponseBody
+	public ModelAndView searchTeacherAttendance(@RequestParam ("year") int year, @RequestParam ("month") int month,@RequestParam ("day") int day)
+	{
+		LocalDate date1 = LocalDate.of(year, month, day);
+		LocalDate date2 = date1.plusDays(1);
+		ModelAndView mv = new ModelAndView("main");
+		
+		mv.addObject("UserClickSearchTeacherAttendance", true);
+		mv.addObject("title", "teacher");
+		mv.addObject("teachers",taDAO.getTeacherAttendanceFromDate(date1, date2));
+		return mv;
 	}
 }

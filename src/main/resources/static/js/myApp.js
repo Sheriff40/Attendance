@@ -563,6 +563,7 @@ $(document)
 																			presentTeacher.attr("btn_attid",data);
 																			absTeacher.prop("disabled",true);
 																			presentTeacher.prop("disabled",true);
+																			editTeacher.attr("btn_attid",data);
 																		});
 																
 															});
@@ -575,12 +576,14 @@ $(document)
 																					absTeacher.attr("btn_attid",data);
 																					absTeacher.prop("disabled",true);
 																					presentTeacher.prop("disabled",true);
+																					editTeacher.attr("btn_attid",data);
 																				});
 																});
 														
 													editTeacher.on('click',function()
 															{
-																alert ("edited");
+																	var attId = editTeacher.attr("btn_attid");
+																	teacherUpdate(attId);
 															});
 													
 													
@@ -624,6 +627,14 @@ $(document)
 										}
 									
 								})
+							}
+							
+							function teacherUpdate(taId)
+							{
+								$.post(window.contextRoot + "/update/teacher/attendance/" + taId,function(data)
+										{
+											alert(data);
+										});
 							}
 							
 						}
