@@ -93,7 +93,7 @@
       				</div>
       				<sf:input type = "hidden" path="id" value = "0"/>
       				<div class = "form-group">
-      					<button type = "submit" value = "submit" class="btn btn-success btn-sm">Submit</button>
+      					<button type = "submit" value = "submit" class="btn btn-danger fa fa-save"> Save</button>
       				</div>
       			</sf:form>
       </div>

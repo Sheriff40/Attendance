@@ -119,17 +119,17 @@ $(document)
 
 													var str = '';
 
-													str += "<button attId = '0' data-number = '0' class='fa fa-check fa-1x btn btn-default btn-sm' id = 'btnPresent_"
+													str += "<button attId = '0' data-number = '0' class='fa fa-check' id = 'btnPresent_"
 															+ row.id
 															+ "'>"
 															+ " Present</button>&nbsp;"
 
-													str += "<button attId = '0' data-number = '0' class='fa fa-times fa-1x btn btn-default btn-sm' id = 'btnAbsent_"
+													str += "<button attId = '0' data-number = '0' class='fa fa-times' id = 'btnAbsent_"
 															+ row.id
 															+ "'>"
 															+ " Absent</button>&nbsp;"
 
-													str += "<button attId = '0' data-number = '0' class = 'fa fa-edit fa-1x btn btn-default btn-sm' id = 'btnEdit_"
+													str += "<button attId = '0' data-number = '0' class = 'fa fa-edit' id = 'btnEdit_"
 															+ row.id
 															+ "'> Edit</button>";
 													var btnPresent = $('#btnPresent_'

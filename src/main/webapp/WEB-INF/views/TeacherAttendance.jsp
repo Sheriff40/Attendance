@@ -1,7 +1,10 @@
 
+<div class = "text-center">
+	<strong>Date: </strong>  " ${date} "
+</div>
 
 <table class="table table-bordered" id = "teacherAttendance">
-	<thead>
+	<thead class="thead-dark">
 		<tr>
 
 			<th>Teacher Id</th>

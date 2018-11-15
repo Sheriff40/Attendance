@@ -6,11 +6,11 @@
 		window.id = ${id}
 	</script>
 	
-	<div class="text-center"><strong>Date: </strong>  ${date}</div>
+	<div class="text-center"><strong>Date: </strong>  " ${date} "</div>
 	
 	<br>
 		<table class="table table-hover" border = "1" id = "attendanceTable" width = "80%">
-			<thead>
+			<thead class="thead-dark">
 				<tr>
 					<th>Id</th>
 					<th>Student Name</th>

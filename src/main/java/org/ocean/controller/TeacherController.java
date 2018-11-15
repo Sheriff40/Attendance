@@ -49,8 +49,10 @@ public class TeacherController {
 	public ModelAndView addTeacherAttendance()
 	{
 		
+		LocalDate date = LocalDate.now();
 		ModelAndView mv = new ModelAndView("main");
 		mv.addObject("title", "Teacher");
+		mv.addObject("date", date);
 		mv.addObject("UserClickTakeTeacherAttendance", true);
 		return mv;
 	}
