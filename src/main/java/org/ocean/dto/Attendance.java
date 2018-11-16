@@ -21,8 +21,8 @@ public class Attendance {
 	@OneToOne
 	private Student student;
 	
-	@Column(name = "class_id")
-	private int classId;
+	@Column(name = "stdClass_id")
+	private int stdClassId;
 	
 	private Boolean status;
 	 
@@ -42,13 +42,18 @@ public class Attendance {
 	
 	
 	
-	public int getClassId() {
-		return classId;
+
+
+	
+
+
+	public int getStdClassId() {
+		return stdClassId;
 	}
 
 
-	public void setClassId(int classId) {
-		this.classId = classId;
+	public void setStdClassId(int stdClassId) {
+		this.stdClassId = stdClassId;
 	}
 
 
@@ -77,9 +82,13 @@ public class Attendance {
 
 	@Override
 	public String toString() {
-		return "Attendance [id=" + id + ", date=" + date + ", student=" + student + ", classId=" + classId + ", status="
-				+ status + "]";
+		return "Attendance [id=" + id + ", date=" + date + ", student=" + student + ", stdClassId=" + stdClassId
+				+ ", status=" + status + "]";
 	}
+
+
+
+
 	
 	
 	

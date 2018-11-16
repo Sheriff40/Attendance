@@ -3,7 +3,7 @@
 <hr>
 
 	<script>
-		window.id = ${id}
+		window.id = '${name}'
 	</script>
 	
 	<div class="text-center"><strong>Date: </strong>  " ${date} "</div>

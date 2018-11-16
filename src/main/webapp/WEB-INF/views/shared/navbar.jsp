@@ -1,4 +1,8 @@
+
+
 <script type="text/javascript" src="${SITE_URL}/js/code.jquery.com.js"></script>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,10 +25,12 @@
 				role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false">Attendance </a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="${SITE_URL}/attendance/take/8">Class
-						8</a> <a class="dropdown-item" href="${SITE_URL}/attendance/take/9">Class
-						9</a> <a class="dropdown-item" href="${SITE_URL}/attendance/take/10">Class
-						10</a>
+
+					<c:forEach var="item" items="${ClassList}">
+						<a class="dropdown-item"
+							href="${SITE_URL}/attendance/take?name=${item.name}">${item.name}</a>
+					</c:forEach>
+
 				</div></li>
 
 
@@ -50,7 +56,7 @@
 
 
 								<form class='form-horizontal'
-									action="${SITE_URL}/show/attendace" method = "POST">
+									action="${SITE_URL}/show/attendace" method="POST">
 									<div class="col-md-12">
 										<div class="form-group">
 											<input type="date" name="date" class="form-control" />
@@ -63,13 +69,14 @@
 										<div class="form-group">
 
 											<select name='classId' class="form-control">
-												<option value='8'>Class 8</option>
-												<option value='9'>Class 9</option>
-												<option value='10'>Class 10</option>
+												<c:forEach var="item" items="${ClassList}">
+													<option value='${item.id}'>Class: ${item.name}</option>
+												</c:forEach>
 											</select>
 										</div>
 										<button type="submit" class="btn fa fa-search"
-											style="border-radius: 50px;background:#34B48D;color:white;"> Search</button>
+											style="border-radius: 50px; background: #34B48D; color: white;">
+											Search</button>
 									</div>
 
 
@@ -109,12 +116,14 @@
 				role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"> Class </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="${SITE_URL}/admin/student/8/get">Class
-						8</a> <a class="dropdown-item" href="${SITE_URL}/admin/student/9/get">Class
-						9</a> <a class="dropdown-item" href="${SITE_URL}/admin/student/10/get">Class
-						10</a>
+
+					<c:forEach var="item" items="${ClassList}">
+						<a class="dropdown-item"
+							href="${SITE_URL}/admin/student/get?name=${item.name}">${item.name}</a>
+					</c:forEach>
+
 					<div class="dropdown-divider"></div>
-					<button class="dropdown-item disabled">Class</button>
+					<button class="dropdown-item">Add Class</button>
 				</div></li>
 			<li class="nav-item dropdown pull-right"><a
 				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"

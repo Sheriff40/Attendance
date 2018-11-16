@@ -1,4 +1,5 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="text-right">
 	<button class = "btn btn-primary fa fa-user-plus"  style = "border-radius:20px;" id="add_teacher"> Add Teacher</button>

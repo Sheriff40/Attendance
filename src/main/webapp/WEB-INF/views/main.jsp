@@ -28,7 +28,9 @@
 <body>
 	<%@include file="shared/navbar.jsp"%>
 
-
+	<c:forEach var="std" items="${studentList}">
+		${std.id }
+	</c:forEach>
 	<div class="container">
 
 
@@ -41,26 +43,26 @@
 		
 		<c:if test="${UserClickClass == true}">
 
-			<%@include file="viewClass.jsp"%>
+			<%@include file="ShowStudent.jsp"%>
 			<script>
-				window.stdId = '${id}';
+				window.className = '${name}';
 			</script>
 
 		</c:if>
 		
 		<c:if test="${UserClickAttendance == true}">
 
-			<%@include file="Attendance.jsp"%>
+			<%@include file="TakeStudentAttendance.jsp"%>
 		
 		</c:if>
 		<c:if test="${UserClickShowAttendance == true}">
 
-			<%@include file="ShowAttendance.jsp"%>
+			<%@include file="EditStudentAttendance.jsp"%>
 		
 		</c:if>
 		<c:if test="${UserClickViewStudent == true}">
 
-			<%@include file="ShowStudent.jsp"%>
+			<%@include file="ShowStudentDetail.jsp"%>
 		
 		</c:if>
 		<c:if test="${UserClickTeacherAttendance == true}">
@@ -70,7 +72,7 @@
 		</c:if>
 		<c:if test="${UserClickTakeTeacherAttendance == true}">
 
-			<%@include file="TeacherAttendance.jsp"%>
+			<%@include file="TakeTeacherAttendance.jsp"%>
 		
 		</c:if>
 		<c:if test="${UserClickSearchTeacherAttendance == true}">

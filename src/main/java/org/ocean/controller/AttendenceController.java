@@ -3,13 +3,16 @@ package org.ocean.controller;
 import java.time.LocalDate;
 
 import org.ocean.dao.AttendanceDAO;
+import org.ocean.dao.ClassDAO;
 import org.ocean.dao.StudentDAO;
 import org.ocean.dto.Attendance;
 import org.ocean.dto.Student;
 import org.ocean.dto.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +27,9 @@ public class AttendenceController {
 	private StudentDAO dao;
 
 	@Autowired
+	private ClassDAO classDAO;
+	
+	@Autowired
 	private AttendanceDAO attendanceDAO;
 
 	@GetMapping("/home")
@@ -31,6 +37,7 @@ public class AttendenceController {
 		ModelAndView mv = new ModelAndView("main");
 		mv.addObject("title", "home");
 		mv.addObject("message", message);
+		
 		return mv;
 	}
 
@@ -45,11 +52,11 @@ public class AttendenceController {
 		return mv;
 	}
 
-	@GetMapping("/attendance/take/{id}")
-	public ModelAndView attendanceTake(@PathVariable("id") int id) {
+	@GetMapping("/attendance/take")
+	public ModelAndView attendanceTake(@RequestParam ("name") String name) {
 
 		ModelAndView mv = new ModelAndView("main");
-		mv.addObject("id", id);
+		mv.addObject("name", name);
 		mv.addObject("title", "attendance");
 		LocalDate date1 = LocalDate.now();
 		mv.addObject("date", date1);
@@ -83,7 +90,7 @@ public class AttendenceController {
 			std.setTotalPresentDay(std.getTotalPresentDay() + 1);
 			att.setDate(date1);
 			att.setStudent(std);
-			att.setClassId(std.getClassId());
+			att.setStdClassId(std.getStdClass().getId());
 			attendanceDAO.save(att);
 			message = att.getId() + "";
 		}
@@ -137,5 +144,10 @@ public class AttendenceController {
 		return mv;
 	}
 
+	@ModelAttribute
+	public void getClasses(Model model)
+	{
+		model.addAttribute("ClassList",classDAO.findAll());
+	}
 	
 }

@@ -2,6 +2,7 @@ package org.ocean.controller;
 
 import java.time.LocalDate;
 
+import org.ocean.dao.ClassDAO;
 import org.ocean.dao.TeacherAttendanceDAO;
 import org.ocean.dao.TeacherDAO;
 import org.ocean.dto.Teacher;
@@ -52,6 +53,7 @@ public class TeacherController {
 		LocalDate date = LocalDate.now();
 		ModelAndView mv = new ModelAndView("main");
 		mv.addObject("title", "Teacher");
+		
 		mv.addObject("date", date);
 		mv.addObject("UserClickTakeTeacherAttendance", true);
 		return mv;

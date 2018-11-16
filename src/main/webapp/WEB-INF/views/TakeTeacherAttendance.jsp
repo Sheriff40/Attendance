@@ -1,4 +1,7 @@
 
+
+	
+
 <div class = "text-center">
 	<strong>Date: </strong>  " ${date} "
 </div>

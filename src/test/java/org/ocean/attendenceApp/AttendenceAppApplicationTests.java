@@ -11,6 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ocean.dao.AttendanceDAO;
+import org.ocean.dao.ClassDAO;
 import org.ocean.dao.StudentDAO;
 import org.ocean.dao.TeacherAttendanceDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ public class AttendenceAppApplicationTests {
 	@Autowired
 	private TeacherAttendanceDAO taDAO;
 	
+	@Autowired
+	private ClassDAO classDAO;
 	
 	@BeforeClass
 	public static void init()
@@ -88,7 +91,11 @@ public class AttendenceAppApplicationTests {
 		
 //		assertEquals("Wrong information",3,Attdao.searchByDate2().size());
 		
-		assertEquals("Wrong information",false,taDAO.getTeacherAttendanceList(2,date1,date2).getStatus());
+//		assertEquals("Wrong information",false,taDAO.getTeacherAttendanceList(2,date1,date2).getStatus());
+		
+//		assertEquals("Wrong Info",2,dao.findByStdClassName("8A").size());
+		
+//		assertEquals("wrong info",3,classDAO.findAll().size());
 	}
 	
 

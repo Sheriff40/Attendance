@@ -1,10 +1,12 @@
 package org.ocean.dto;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Student {
@@ -23,8 +25,9 @@ public class Student {
 	private String permAddress;
 	private String localGuardian;
 	private String localNumber;
-	@Column(name = "class")
-	private int classId;
+	
+	@OneToOne
+	private Classes stdClass;
 	
 	@Column(name = "total_present_day")
 	private int totalPresentDay = 0;
@@ -54,11 +57,12 @@ public class Student {
 	public void setNumber(String number) {
 		this.number = number;
 	}
-	public int getClassId() {
-		return classId;
+	
+	public Classes getStdClass() {
+		return stdClass;
 	}
-	public void setClassId(int classId) {
-		this.classId = classId;
+	public void setStdClass(Classes stdClass) {
+		this.stdClass = stdClass;
 	}
 	public int getTotalPresentDay() {
 		return totalPresentDay;
@@ -108,9 +112,6 @@ public class Student {
 	public void setLocalNumber(String localNumber) {
 		this.localNumber = localNumber;
 	}
-	
-	
-	
 	public String getRollNo() {
 		return rollNo;
 	}
@@ -122,9 +123,10 @@ public class Student {
 		return "Student [id=" + id + ", rollNo=" + rollNo + ", fname=" + fname + ", lname=" + lname + ", fatherName="
 				+ fatherName + ", motherName=" + motherName + ", number=" + number + ", tempAddress=" + tempAddress
 				+ ", permAddress=" + permAddress + ", localGuardian=" + localGuardian + ", localNumber=" + localNumber
-				+ ", classId=" + classId + ", totalPresentDay=" + totalPresentDay + ", totalAbsentDay=" + totalAbsentDay
-				+ "]";
+				+ ", stdClass=" + stdClass + ", totalPresentDay=" + totalPresentDay + ", totalAbsentDay="
+				+ totalAbsentDay + "]";
 	}
+
 	
 	
 	

@@ -20,7 +20,7 @@ public interface AttendanceDAO extends JpaRepository<Attendance, Integer>
 	
 	public Attendance findByStudentId(int id);
    
-	@Query(value = "SELECT * FROM Attendance a WHERE a.class_Id = ?1 AND date >= ?2 AND date < ?3  ",nativeQuery = true)
+	@Query(value = "SELECT * FROM Attendance a WHERE a.std_Class_Id = ?1 AND date >= ?2 AND date < ?3  ",nativeQuery = true)
 	public List<Attendance> searchByDateAndId(int id,LocalDate date1, LocalDate date2);
 	
 	@Query(value = "SELECT * FROM Attendance WHERE student_id = ?1 AND date >= ?2 AND date < ?3  ",nativeQuery = true)

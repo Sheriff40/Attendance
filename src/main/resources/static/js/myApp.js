@@ -26,8 +26,7 @@ $(document)
 
 					}
 
-					var json = window.contextRoot + '/json/' + window.stdId
-							+ '/student';
+					var json = window.contextRoot + '/json/get/student?name=' + window.className ;
 
 					var table = $("#viewClass");
 					if (table.length) {
@@ -91,8 +90,8 @@ $(document)
 					}
 
 					var attendtbl = $("#attendanceTable");
-					var jsonURL2 = window.contextRoot + '/json/attendance/'
-							+ window.id;
+					var jsonURL2 = window.contextRoot + '/json/attendance?name='
+							+ window.id ;
 
 					if (attendtbl.length) {
 
