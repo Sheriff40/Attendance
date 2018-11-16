@@ -14,13 +14,13 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item "><a class="nav-link"
-				href="${SITE_URL}/home" id = "home" >Home <span class="sr-only">(current)</span>
+				href="${SITE_URL}/home" id="home">Home <span class="sr-only">(current)</span>
 			</a></li>
-			<li class="nav-item dropdown" id = "att_attendance"><a
-				class="nav-link dropdown-toggle" href="#" id="att_attendance" role="button"
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Attendance
-			</a>
-				<div class="dropdown-menu" >
+			<li class="nav-item dropdown" id="att_attendance"><a
+				class="nav-link dropdown-toggle" href="#" id="att_attendance"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false">Attendance </a>
+				<div class="dropdown-menu">
 					<a class="dropdown-item" href="${SITE_URL}/attendance/take/8">Class
 						8</a> <a class="dropdown-item" href="${SITE_URL}/attendance/take/9">Class
 						9</a> <a class="dropdown-item" href="${SITE_URL}/attendance/take/10">Class
@@ -28,7 +28,7 @@
 				</div></li>
 
 
-			
+
 
 			<li class="nav-item"><a class="nav-link"
 				href="javascript:void(0)" id="searchBtn">Search</a>
@@ -38,7 +38,8 @@
 					aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
-							<div class="modal-header">
+							<div class="modal-header"
+								style="background: black; color: white;">
 								<h5 class="modal-title" id="exampleModalLabel">Search</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
@@ -46,38 +47,40 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								
-								
-								<form class='form-horizontal' action = "${SITE_URL}/show/attendace">
-									<div class="form-group">
-										<input class= "form-control" type='text' name = 'year' 
-										placeholder = 'yyyy'/>
+
+
+								<form class='form-horizontal'
+									action="${SITE_URL}/show/attendace" method = "POST">
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="date" name="date" class="form-control" />
+										</div>
 									</div>
-									<div class="form-group">
-									<input class= "form-control" type='text' name = 'month' 
-										placeholder = 'mm'/>
+
+									<div class="col-md-4">
+
+
+										<div class="form-group">
+
+											<select name='classId' class="form-control">
+												<option value='8'>Class 8</option>
+												<option value='9'>Class 9</option>
+												<option value='10'>Class 10</option>
+											</select>
+										</div>
+										<button type="submit" class="btn fa fa-search"
+											style="border-radius: 50px;background:#34B48D;color:white;"> Search</button>
 									</div>
-									<div class="form-group">
-										<input class= "form-control" type='text' name = 'day' 
-										placeholder = 'dd'/>
-									</div>
-									<div class="form-group">
-									
-									<select name = 'classId' class = "form-control" >
-										<option value = '8'>Class 8 </option>
-										<option value = '9'>Class 9 </option>
-										<option value = '10'>Class 10 </option>
-									</select>
-									</div>
-									<button type="submit" class="btn btn-primary">Search</button>
-									
-								
+
+
+
+
 								</form>
-								
-								
+
+
 
 							</div>
-							
+
 						</div>
 					</div>
 				</div> <script type="text/javascript">
@@ -89,7 +92,9 @@
 						});
 					});
 				</script></li>
-			<li class="nav-item"><a class="nav-link" href = "${SITE_URL}/show/teacher" id="att_teacher">Teacher Attendance</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="${SITE_URL}/show/teacher" id="att_teacher">Teacher
+					Attendance</a></li>
 
 		</ul>
 
@@ -100,9 +105,9 @@
 		<ul class="navbar-nav pull right">
 
 			<li class="nav-item dropdown pull-right"><a
-				class="nav-link dropdown-toggle" href="#" id="att_class" role="button"
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Class </a>
+				class="nav-link dropdown-toggle" href="#" id="att_class"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> Class </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="${SITE_URL}/admin/student/8/get">Class
 						8</a> <a class="dropdown-item" href="${SITE_URL}/admin/student/9/get">Class

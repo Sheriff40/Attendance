@@ -116,9 +116,10 @@ public class TeacherController {
 	
 	@PostMapping(value = "/search/teacher/attendance")
 	@ResponseBody
-	public ModelAndView searchTeacherAttendance(@RequestParam ("year") int year, @RequestParam ("month") int month,@RequestParam ("day") int day)
+	public ModelAndView searchTeacherAttendance(@RequestParam ("date") String date)
 	{
-		LocalDate date1 = LocalDate.of(year, month, day);
+		
+		LocalDate date1 = LocalDate.parse(date);
 		LocalDate date2 = date1.plusDays(1);
 		ModelAndView mv = new ModelAndView("main");
 		

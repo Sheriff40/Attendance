@@ -40,6 +40,7 @@ $(document)
 										url : json,
 										dataSrc : ''
 									},
+									bSort: false,
 									columns : [
 											{
 												data : 'rollNo'
@@ -102,6 +103,7 @@ $(document)
 										url : jsonURL2,
 										dataSrc : ''
 									},
+									bSort: false,
 									columns : [
 											{
 												data : 'id'
@@ -486,6 +488,7 @@ $(document)
 								url : url,
 								dataSrc : ''
 							},
+							bSort: false,
 							columns : [
 
 							{
@@ -530,6 +533,7 @@ $(document)
 										url : url,
 										dataSrc : ''
 									},
+									bSort: false,
 							columns :
 									[
 										{

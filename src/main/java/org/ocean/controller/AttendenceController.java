@@ -110,13 +110,12 @@ public class AttendenceController {
 		return message;
 	}
 
-	@RequestMapping(value = "/show/attendace")
+	@PostMapping(value = "/show/attendace")
 	@ResponseBody
-	public ModelAndView getAll(@RequestParam("year")int year,@RequestParam("month")int month,
-			@RequestParam("day")int day , @RequestParam("classId")int id)
+	public ModelAndView getAll(@RequestParam("date") String date, @RequestParam("classId")int id)
 	{
 
-		LocalDate date1 = LocalDate.of(year, month, day);
+		LocalDate date1 = LocalDate.parse(date);
 		LocalDate date2 = date1.plusDays(1);
 		ModelAndView mv = new ModelAndView ("main");
 		mv.addObject("UserClickShowAttendance",true);

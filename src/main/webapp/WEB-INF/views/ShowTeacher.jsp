@@ -17,7 +17,7 @@
 					aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
-							<div class="modal-header">
+							<div class="modal-header " style= "background:black;color:white;">
 								<h5 class="modal-title" id="exampleModalLabel">Search</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
@@ -27,20 +27,12 @@
 							<div class="modal-body">
 
 								<form class='form-horizontal' action = "${SITE_URL}/search/teacher/attendance" method = "POST">
+									
 									<div class="form-group">
-										<input class= "form-control" type='text' name = 'year' 
-										placeholder = 'yyyy'/>
+										<input class = 'form-control' type='date' name = 'date'/>
+										
 									</div>
-									<div class="form-group">
-									<input class= "form-control" type='text' name = 'month' 
-										placeholder = 'mm'/>
-									</div>
-									<div class="form-group">
-										<input class= "form-control" type='text' name = 'day' 
-										placeholder = 'dd'/>
-									</div>
-								
-									<button type="submit" class="btn btn-primary">Search</button>
+									<button type="submit" class="btn fa fa-search" style = "border-radius:50px;background:#34B48D;color:white;"> Search</button>
 									
 								
 								</form>
