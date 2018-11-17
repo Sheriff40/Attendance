@@ -123,7 +123,9 @@
 					</c:forEach>
 
 					<div class="dropdown-divider"></div>
-					<button class="dropdown-item">Add Class</button>
+					<a class="dropdown-item" id = "addClass" href = "${SITE_URL }/admin/show/classes">Show/Add New Class</a>
+					
+					
 				</div></li>
 			<li class="nav-item dropdown pull-right"><a
 				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"

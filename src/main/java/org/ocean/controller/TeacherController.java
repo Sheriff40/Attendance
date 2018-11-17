@@ -9,6 +9,7 @@ import org.ocean.dto.Teacher;
 import org.ocean.dto.TeacherAttendance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,9 @@ public class TeacherController {
 
 	@Autowired
 	private TeacherDAO teacherDAO;
+	
+	@Autowired
+	private ClassDAO classDAO;
 	
 	@Autowired
 	private TeacherAttendanceDAO taDAO;
@@ -144,4 +148,9 @@ public class TeacherController {
 		return mv;
 	}
 	
+	@ModelAttribute
+	public void getClasses(Model model)
+	{
+		model.addAttribute("ClassList",classDAO.findAll());
+	}
 }

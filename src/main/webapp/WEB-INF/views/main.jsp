@@ -88,8 +88,13 @@
 		<c:if test = "${UserClickTeacherEdit == true }">
 			<%@include file="EditTeacher.jsp"%>
 		</c:if>
+		<c:if test = "${UserClickShowClasses == true }">
+			<%@include file="ShowClasses.jsp"%>
+		</c:if>
+		<c:if test = "${UserClickEditClass == true }">
+			<%@include file="EditClass.jsp"%>
+		</c:if>
 		
-
 	</div>
 	
 	<div class = "footer">

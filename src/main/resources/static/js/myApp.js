@@ -641,7 +641,37 @@ $(document)
 						}
 
 					
-					
+					var classesTable = $("#classesTable");
+					if(classesTable.length > 0){
+						classesTable.DataTable({
+							ajax:
+								{
+									url: window.contextRoot + "/json/get/classes",
+									dataSrc : ''
+								},
+							columns :
+								[
+									{
+										data: 'name'
+									},
+									{
+										
+										mRender : function(data,type,row)
+										{
+											var str = '';
+											str += "<a class = 'btn fa fa-trash-alt' href = '"+window.contextRoot+ "/admin/delete/class/" + row.id +"' style = 'font-size:18px;border-radius:10px;color:green;'></a> ";
+											str += "<a class = 'btn fa fa-user-edit'  href = '"+window.contextRoot+ "/admin/edit/class/" + row.id +"' style = 'font-size:18px;border-radius:10px;color:purple;'></a> ";
+											return str;
+										}
+									}
+									
+									
+										
+								]
+						})
+					}
+						
+				
 					
 					
 				});

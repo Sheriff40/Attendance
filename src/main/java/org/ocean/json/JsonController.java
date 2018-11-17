@@ -3,14 +3,15 @@ package org.ocean.json;
 
 import java.util.List;
 
+import org.ocean.dao.ClassDAO;
 import org.ocean.dao.StudentDAO;
 import org.ocean.dao.TeacherDAO;
+import org.ocean.dto.Classes;
 import org.ocean.dto.Student;
 import org.ocean.dto.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,9 @@ public class JsonController {
 
 	@Autowired
 	private StudentDAO dao;
+	
+	@Autowired
+	private ClassDAO classDAO;
 	
 	@Autowired
 	private TeacherDAO teacherDAO;
@@ -48,5 +52,11 @@ public class JsonController {
 	public List<Teacher> getTeachers()
 	{
 		return teacherDAO.findAll();
+	}
+	
+	@GetMapping("/get/classes")
+	public List<Classes> getClasses()
+	{
+		return classDAO.findAll();
 	}
 }
