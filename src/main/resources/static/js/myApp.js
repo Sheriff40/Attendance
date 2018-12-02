@@ -649,6 +649,7 @@ $(document)
 									url: window.contextRoot + "/json/get/classes",
 									dataSrc : ''
 								},
+								bSort: false,
 							columns :
 								[
 									{

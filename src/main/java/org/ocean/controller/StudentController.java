@@ -4,6 +4,7 @@ package org.ocean.controller;
 
 import org.ocean.dao.ClassDAO;
 import org.ocean.dao.StudentDAO;
+
 import org.ocean.dto.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -93,6 +94,22 @@ public class StudentController {
 		mv.addObject("title", "Class");
 		mv.addObject("EditStudentAttendance",true);
 		return mv;
+	}
+	
+	@RequestMapping(value = "/delete/student/{id}")
+	public String deleteStudent(@PathVariable("id")int id)
+	{
+		Student std = dao.getById(id);
+		String className = std.getStdClass().getName();
+		try
+		{
+			dao.delete(std);
+			return "redirect:/admin/student/get?name="+className;
+		}
+		catch (Exception ex)
+		{
+			return ex.toString();
+		}
 	}
 	
 	@ModelAttribute

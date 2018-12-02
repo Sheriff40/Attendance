@@ -1,9 +1,11 @@
 package org.ocean.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  * @author Yamakuzi
@@ -21,6 +23,11 @@ public class Teacher {
 	private String address;
 	private String number;
 	private String subject;
+	
+	@OneToOne(mappedBy = "teacher",cascade = CascadeType.REMOVE)
+	private TeacherAttendance teacherAttendance;
+	
+	
 	public int getId() {
 		return id;
 	}

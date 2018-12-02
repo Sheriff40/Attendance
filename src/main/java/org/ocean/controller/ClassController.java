@@ -42,6 +42,21 @@ public class ClassController {
 			return mv;
 		}
 		
+		@GetMapping(value = "/delete/class/{id}")
+		public String deleteClass(@PathVariable("id")int id)
+		{
+			Classes classes = classDAO.findById(id).orElse(new Classes());
+			try
+			{
+				classDAO.delete(classes);
+				return "redirect:/home";
+			}
+			catch (Exception ex)
+			{
+				return ex.toString();
+			}
+		}
+		
 		@PostMapping(value = "/save/class")
 		public String addClass(@ModelAttribute ("classes")Classes classes)
 		{

@@ -114,5 +114,6 @@
 <script type="text/javascript" src="${SITE_URL}/js/myApp.js"></script>
 
 <script type="text/javascript" src="${SITE_URL}/js/jquery.validate.js"></script>
-
+<script type="text/javascript" src="${SITE_URL}/js/jspdf.min.js"></script>
+<script type="text/javascript" src="${SITE_URL}/js/html2canvas.js"></script>
 </html>

@@ -1,6 +1,34 @@
+
+
+
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<table class="table">
+
+
+<script type="text/javascript" >
+	
+	function pdfGen()
+	{
+			html2canvas(document.getElementById("pdfTable")).then(function(canvas) 
+			{
+				var img = canvas.toDataURL("image/png");
+				var doc = new jsPDF();
+				doc.addImage(img,'JPEG',20,20);
+				doc.save('GeneratedPDF.pdf');
+				
+			});	
+		
+		
+	}
+	
+	
+	
+</script>
+
+
+
+<table class="table" id = "pdfTable">
 	<tr>
 		<th>Students</th>
 		<th>Attendance</th>
@@ -57,3 +85,6 @@
 	</c:forEach>
 	
 </table>
+
+<a href = "javascript:pdfGen()" class = "btn btn-danger fa fa-download"> Download PDF</a>
+

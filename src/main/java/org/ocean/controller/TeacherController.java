@@ -136,7 +136,6 @@ public class TeacherController {
 	}
 	
 	@RequestMapping(value = "/edit/teacher/{id}")
-	
 	public ModelAndView editAttendance(@PathVariable ("id") int id)
 	{
 		
@@ -147,6 +146,24 @@ public class TeacherController {
 		mv.addObject("teacher", teacher);
 		return mv;
 	}
+	
+	
+	@RequestMapping(value = "/delete/teacher/{id}")
+	
+	public String deleteTeacher(@PathVariable("id") int id)
+	{
+		Teacher teacher = teacherDAO.getById(id);
+		try
+		{
+			teacherDAO.delete(teacher);
+			return "redirect:/show/teacher";
+		}
+		catch (Exception ex)
+		{
+			return ex.toString();
+		}
+	}
+	
 	
 	@ModelAttribute
 	public void getClasses(Model model)
