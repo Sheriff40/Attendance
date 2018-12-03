@@ -1,6 +1,21 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<table class="table table-bordered">
+<script type = "text/javascript">
+	function pdfDown()
+	{
+		html2canvas(document.getElementById("teacherAttend")).then(function(canvas)
+		{
+			var img = canvas.toDataURL("image/png");
+			var doc = new jsPDF('p','mm','a4');
+			doc.addImage(img,'JPEG',0,0);
+			doc.save('new.pdf');
+		});
+		
+	}
+</script>
+
+
+<table class="table table-bordered" id="teacherAttend">
 	<thead class="thead-dark">
 		<tr>
 			<th>Teacher Id</th>
@@ -61,5 +76,7 @@
 		</c:forEach>
 	</tbody>
 </table>
+
+<a href = "javascript:pdfDown()" class="btn btn-danger fa fa-download"> Download PDF</a>
 
 
