@@ -1,4 +1,7 @@
 
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
+
 
 <script type="text/javascript" src="${SITE_URL}/js/code.jquery.com.js"></script>
 
@@ -15,11 +18,13 @@
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
+
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item "><a class="nav-link"
 				href="${SITE_URL}/home" id="home">Home <span class="sr-only">(current)</span>
 			</a></li>
+
 			<li class="nav-item dropdown" id="att_attendance"><a
 				class="nav-link dropdown-toggle" href="#" id="att_attendance"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -99,9 +104,12 @@
 						});
 					});
 				</script></li>
-			<li class="nav-item"><a class="nav-link"
-				href="${SITE_URL}/admin/show/teacher" id="att_teacher">Teacher
-					Attendance</a></li>
+
+			<security:authorize access="hasRole('admin')">
+				<li class="nav-item"><a class="nav-link"
+					href="${SITE_URL}/admin/show/teacher" id="att_teacher">Teacher
+						Attendance</a></li>
+			</security:authorize>
 
 		</ul>
 
@@ -122,10 +130,14 @@
 							href="${SITE_URL}/user/student/get?name=${item.name}">${item.name}</a>
 					</c:forEach>
 
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" id = "addClass" href = "${SITE_URL}/admin/show/classes">Show/Add New Class</a>
-					
-					
+					<security:authorize access="hasRole('admin')">
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" id="addClass"
+							href="${SITE_URL}/admin/show/classes">Show/Add New Class</a>
+
+					</security:authorize>
+
+
 				</div></li>
 			<li class="nav-item dropdown pull-right"><a
 				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
