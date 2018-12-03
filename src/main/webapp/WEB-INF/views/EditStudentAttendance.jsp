@@ -61,7 +61,7 @@
 						edit.on('click',function(){
 							var attId = ${att.id};
 							var btn = $("#btn_"+attId);
-							$.post( window.contextRoot + "/update/attendance/" + attId,function(data)
+							$.post( window.contextRoot + "/user/update/attendance/" + attId,function(data)
 									{
 										if(data == "present")
 											{

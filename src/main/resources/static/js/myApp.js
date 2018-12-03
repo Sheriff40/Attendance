@@ -58,25 +58,25 @@ $(document)
 														row) {
 													var str = '';
 													var link = window.contextRoot
-															+ "/view/student"
+															+ "/user/view/student"
 															+ data;
 													
 													str += '<a class = "btn fa fa-eye "  style = "color:black;font-size:18px;" href= " '
 														+ window.contextRoot
-														+ '/admin/view/student/'
+														+ '/user/view/student/'
 														+ data
 														+ '  " ></a> ';
 													
 													
 													str += '<a class = "btn fa fa-trash-alt" style = "color:green;font-size:18px;" href= " '
 														+ window.contextRoot
-														+ '/admin/delete/student/'
+														+ '/user/delete/student/'
 														+ data
 														+ '  " > </a> ';
 													
 													str += '<a class = "btn fa fa-user-edit" style = "color:purple;font-size:18px;" href= " '
 														+ window.contextRoot
-														+ '/admin/edit/student/'
+														+ '/user/edit/student/'
 														+ data
 														+ '  " > </a>  ';
 													return str;
@@ -380,7 +380,7 @@ $(document)
 					function setToPresent(row_id, callback) {
 						$
 								.post(
-										window.contextRoot + "/add/attendance/"
+										window.contextRoot + "/user/add/attendance/"
 												+ row_id + "?abs=false",
 										function(data) {
 											if (data === 'error') {
@@ -397,7 +397,7 @@ $(document)
 						$
 								.post(
 										window.contextRoot
-												+ "/update/attendance/" + attId,
+												+ "/user/update/attendance/" + attId,
 										function(data) {
 											if (data == "present") {
 												alert("The attendance has been set to present");
@@ -410,7 +410,7 @@ $(document)
 					function setToAbsent(row_id, callback) {
 						$
 								.post(
-										window.contextRoot + "/add/attendance/"
+										window.contextRoot + "/user/add/attendance/"
 												+ row_id + "?abs=true",
 										function(data) {
 											if (data === 'error') {
@@ -510,8 +510,8 @@ $(document)
 								mRender : function(data,type,row)
 								{
 									var str = '';
-									str += "<a class = 'btn fa fa-trash-alt' href = '"+window.contextRoot+ "/delete/teacher/" + data +"' style = 'font-size:18px;border-radius:10px;color:green;'></a> ";
-									str += "<a class = 'btn fa fa-user-edit' href = '"+window.contextRoot+ "/edit/teacher/" + data +"' style = 'font-size:18px;border-radius:10px;color:purple;'></a> ";
+									str += "<a class = 'btn fa fa-trash-alt' href = '"+window.contextRoot+ "/admin/delete/teacher/" + data +"' style = 'font-size:18px;border-radius:10px;color:green;'></a> ";
+									str += "<a class = 'btn fa fa-user-edit' href = '"+window.contextRoot+ "/admin/edit/teacher/" + data +"' style = 'font-size:18px;border-radius:10px;color:purple;'></a> ";
 									return str;
 								}
 							}
@@ -598,7 +598,7 @@ $(document)
 							
 							function teacherPresent(taId,callback)
 							{
-								var url = window.contextRoot + "/add/teacher/attendance/" + taId + "?abs=false";
+								var url = window.contextRoot + "/admin/add/teacher/attendance/" + taId + "?abs=false";
 								$.post(url,{},function(data){
 									if (data == "error")
 										{
@@ -615,7 +615,7 @@ $(document)
 							
 							function teacherAbsent(taId,callback)
 							{
-								var url = window.contextRoot + "/add/teacher/attendance/" + taId + "?abs=true";
+								var url = window.contextRoot + "/admin/add/teacher/attendance/" + taId + "?abs=true";
 								$.post(url,{},function(data){
 									if (data == "error")
 									{
@@ -632,7 +632,7 @@ $(document)
 							
 							function teacherUpdate(taId)
 							{
-								$.post(window.contextRoot + "/update/teacher/attendance/" + taId,function(data)
+								$.post(window.contextRoot + "/admin/update/teacher/attendance/" + taId,function(data)
 										{
 											alert(data);
 										});

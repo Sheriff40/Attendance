@@ -22,7 +22,7 @@
 			</div>
 			<div class="modal-body">
 				<sf:form method="POST" id="stdForm" modelAttribute="student"
-					class="form-horizontal" action="${SITE_URL}/admin/student/add">
+					class="form-horizontal" action="${SITE_URL}/user/student/add">
 					<div class="form-group">
 						<label class="label-control">Roll No</label>
 						<sf:input type="text" path="rollNo" class="form-control" />

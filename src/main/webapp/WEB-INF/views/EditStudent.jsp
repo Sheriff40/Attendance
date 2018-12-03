@@ -9,7 +9,7 @@
 <br>
 <div class="col-md-12">
 	<sf:form modelAttribute="student" class="form-horizontal" method="POST"
-		action="${SITE_URL}/admin/student/add">
+		action="${SITE_URL}/user/student/add">
 
 		<div class="row">
 			<div class="form-group col-md-3">
@@ -73,7 +73,7 @@
 		<sf:input type="hidden" path="id" />
 		<div class="form-group">
 			<a class="btn btn-primary fa fa-caret-left"
-				href="${SITE_URL}/admin/student/get?name=${student.stdClass.name}">
+				href="${SITE_URL}/user/student/get?name=${student.stdClass.name}">
 				Back</a>
 				<button type="submit" class="btn btn-danger fa fa-save">
 				Save</button>

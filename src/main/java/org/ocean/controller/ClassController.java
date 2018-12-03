@@ -49,7 +49,7 @@ public class ClassController {
 			try
 			{
 				classDAO.delete(classes);
-				return "redirect:/home";
+				return "redirect:/admin/show/classes";
 			}
 			catch (Exception ex)
 			{

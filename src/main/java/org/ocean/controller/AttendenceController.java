@@ -41,7 +41,7 @@ public class AttendenceController {
 		return mv;
 	}
 
-	@GetMapping("/home/attendance")
+	@GetMapping("/user/home/attendance")
 	public ModelAndView attendance() {
 		ModelAndView mv = new ModelAndView("main");
 		
@@ -52,7 +52,7 @@ public class AttendenceController {
 		return mv;
 	}
 
-	@GetMapping("/attendance/take")
+	@GetMapping("/user/attendance/take")
 	public ModelAndView attendanceTake(@RequestParam ("name") String name) {
 
 		ModelAndView mv = new ModelAndView("main");
@@ -64,7 +64,7 @@ public class AttendenceController {
 		return mv;
 	}
 
-	@PostMapping(value = "/add/attendance/{id}")
+	@PostMapping(value = "/user/add/attendance/{id}")
 	@ResponseBody
 	public String addAttendancePresent(@PathVariable("id") int id,
 			@RequestParam(name = "abs", required = false) Boolean abs) {
@@ -97,7 +97,7 @@ public class AttendenceController {
 		return message;
 	}
 
-	@PostMapping(value = "/update/attendance/{id}")
+	@PostMapping(value = "/user/update/attendance/{id}")
 	@ResponseBody
 	public String updateAttendanceAbsent(@PathVariable("id") int attId) {
 		String message = null;
@@ -117,7 +117,7 @@ public class AttendenceController {
 		return message;
 	}
 
-	@PostMapping(value = "/show/attendace")
+	@PostMapping(value = "/user/show/attendace")
 	@ResponseBody
 	public ModelAndView getAll(@RequestParam("date") String date, @RequestParam("classId")int id)
 	{
@@ -133,7 +133,7 @@ public class AttendenceController {
 	
 
 	
-	@RequestMapping(value = "/show/teacher")
+	@RequestMapping(value = "/admin/show/teacher")
 	public ModelAndView attendanceTeacher()
 	{
 		Teacher teacher = new Teacher();

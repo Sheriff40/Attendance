@@ -60,10 +60,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http.
 		authorizeRequests().
-			antMatchers("/","/home").hasRole("admin").
-			antMatchers("/login**").permitAll().
-			anyRequest().anonymous().and()
-			.formLogin().loginPage("/login").
+			
+			antMatchers("/admin/**").hasRole("admin").
+			antMatchers("/user/**").hasAnyRole("user","admin").
+			antMatchers("/login").permitAll().
+			antMatchers("/home").authenticated().
+			and().
+			formLogin().loginPage("/login").
 			loginProcessingUrl("/login").
 			defaultSuccessUrl("/home",true).
 			failureUrl("/login?success=false").

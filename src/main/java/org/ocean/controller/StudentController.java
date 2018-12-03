@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/user")
 public class StudentController {
 
 	@Autowired
@@ -36,7 +36,7 @@ public class StudentController {
 			dao.save(std);
 			
 			message = "Inserted the data successfully";
-			return "redirect:/admin/student/get?name="+std.getStdClass().getName();
+			return "redirect:/user/student/get?name="+std.getStdClass().getName();
 			
 		}
 		catch(Exception ex)
@@ -104,7 +104,7 @@ public class StudentController {
 		try
 		{
 			dao.delete(std);
-			return "redirect:/admin/student/get?name="+className;
+			return "redirect:/user/student/get?name="+className;
 		}
 		catch (Exception ex)
 		{

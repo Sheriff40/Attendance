@@ -28,7 +28,7 @@
 
 					<c:forEach var="item" items="${ClassList}">
 						<a class="dropdown-item"
-							href="${SITE_URL}/attendance/take?name=${item.name}">${item.name}</a>
+							href="${SITE_URL}/user/attendance/take?name=${item.name}">${item.name}</a>
 					</c:forEach>
 
 				</div></li>
@@ -56,7 +56,7 @@
 
 
 								<form class='form-horizontal'
-									action="${SITE_URL}/show/attendace" method="POST">
+									action="${SITE_URL}/user/show/attendace" method="POST">
 									<div class="col-md-12">
 										<div class="form-group">
 											<input type="date" name="date" class="form-control" />
@@ -100,7 +100,7 @@
 					});
 				</script></li>
 			<li class="nav-item"><a class="nav-link"
-				href="${SITE_URL}/show/teacher" id="att_teacher">Teacher
+				href="${SITE_URL}/admin/show/teacher" id="att_teacher">Teacher
 					Attendance</a></li>
 
 		</ul>
@@ -119,11 +119,11 @@
 
 					<c:forEach var="item" items="${ClassList}">
 						<a class="dropdown-item"
-							href="${SITE_URL}/admin/student/get?name=${item.name}">${item.name}</a>
+							href="${SITE_URL}/user/student/get?name=${item.name}">${item.name}</a>
 					</c:forEach>
 
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" id = "addClass" href = "${SITE_URL }/admin/show/classes">Show/Add New Class</a>
+					<a class="dropdown-item" id = "addClass" href = "${SITE_URL}/admin/show/classes">Show/Add New Class</a>
 					
 					
 				</div></li>

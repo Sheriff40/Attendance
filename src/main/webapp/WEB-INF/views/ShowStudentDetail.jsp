@@ -25,7 +25,7 @@ Name : ${student.localGuardian}
 Mobile No: ${student.localNumber }
 <br>
 <br>
-<a class = "btn btn-danger fa fa-caret-left"  href = "${SITE_URL}/admin/student/get?name=${student.stdClass.name}"> Back</a>
+<a class = "btn btn-danger fa fa-caret-left"  href = "${SITE_URL}/user/student/get?name=${student.stdClass.name}"> Back</a>
 </div>
 <div class="col-md-6">
 	<h3>Total Present Days: ${student.totalPresentDay }</h3>

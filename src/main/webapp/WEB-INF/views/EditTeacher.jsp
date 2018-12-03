@@ -8,7 +8,7 @@
 
 <br>
 <div class="col-md-6">
-	<sf:form method = "POST" modelAttribute="teacher" id = "teacherForm" action = "${SITE_URL}/add/teacher">
+	<sf:form method = "POST" modelAttribute="teacher" id = "teacherForm" action = "${SITE_URL}/admin/add/teacher">
       				<div class="form-group">
       					<label class="label-control">Id</label>
       					<sf:input path = 'staffId' type = "text" class="form-control" />
@@ -31,7 +31,7 @@
       				</div>
       				<sf:input type = "hidden" path = "id"/>
       				<div class = "form-group">
-      				<a  class="btn btn-primary fa fa-caret-left" href = "${SITE_URL }/show/teacher"> Back</a>
+      				<a  class="btn btn-primary fa fa-caret-left" href = "${SITE_URL }/admin/show/teacher"> Back</a>
       					<button type = "submit" value = "submit"  class="btn btn-danger fa fa-save"> Submit</button>
       					
       				</div>

@@ -8,7 +8,7 @@
 <div class="row">
 	<button id = "searchTeacherAttendance"  style = "border:1px solid black;color:white; border-radius: 20px;background: #34B48D;font-size:18px;">Search/Edit </button>
 	&nbsp;
-	<a class ="btn btn-danger" style = "border-radius:20px;border:1px solid black;" href = "${SITE_URL}/take/teacher/attendance">Take Attendance</a>
+	<a class ="btn btn-danger" style = "border-radius:20px;border:1px solid black;" href = "${SITE_URL}/admin/take/teacher/attendance">Take Attendance</a>
 </div>
 <br>
 
@@ -27,7 +27,7 @@
 							</div>
 							<div class="modal-body">
 
-								<form class='form-horizontal' action = "${SITE_URL}/search/teacher/attendance" method = "POST">
+								<form class='form-horizontal' action = "${SITE_URL}/admin/search/teacher/attendance" method = "POST">
 									
 									<div class="form-group">
 										<input class = 'form-control' type='date' name = 'date'/>
@@ -63,7 +63,7 @@
         </button>
       </div>
       <div class="modal-body">
-      			<sf:form method = "POST" modelAttribute="teacher" id = "teacherForm" action = "${SITE_URL}/add/teacher">
+      			<sf:form method = "POST" modelAttribute="teacher" id = "teacherForm" action = "${SITE_URL}/admin/add/teacher">
       				<div class="form-group">
       					<label class="label-control">Id</label>
       					<sf:input path = 'staffId' type = "text" class="form-control" />

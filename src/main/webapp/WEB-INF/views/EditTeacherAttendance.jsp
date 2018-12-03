@@ -53,7 +53,7 @@
 						editTeacher.on('click',function()
 							{
 								var statusBtn = $("#status_"+ ${teacher.id});
-								$.post(window.contextRoot + "/update/teacher/attendance/" + ${teacher.id},function(data)
+								$.post(window.contextRoot + "/admin/update/teacher/attendance/" + ${teacher.id},function(data)
 										{
 											if(data == "present")
 											{

@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
+@RequestMapping(value = "/admin")
 public class TeacherController {
 
 
@@ -42,7 +43,7 @@ public class TeacherController {
 		try
 		{
 			teacherDAO.save(teacher);
-			return "redirect:/show/teacher";
+			return "redirect:/admin/show/teacher";
 		}
 		catch(Exception ex)
 		{
@@ -156,7 +157,7 @@ public class TeacherController {
 		try
 		{
 			teacherDAO.delete(teacher);
-			return "redirect:/show/teacher";
+			return "redirect:/admin/show/teacher";
 		}
 		catch (Exception ex)
 		{
