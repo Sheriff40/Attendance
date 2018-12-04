@@ -15,6 +15,7 @@ public class User {
 	private String lname;
 	private String email;
 	private String number;
+	private String password;
 	private String role;
 	private boolean active;
 	public int getId() {
@@ -47,6 +48,15 @@ public class User {
 	public void setNumber(String number) {
 		this.number = number;
 	}
+	
+	
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getRole() {
 		return role;
 	}
@@ -63,8 +73,10 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", number=" + number
-				+ ", role=" + role + ", active=" + active + "]";
+				+ ", password=" + password + ", role=" + role + ", active=" + active + "]";
 	}
+	
+	
 	
 	
 	

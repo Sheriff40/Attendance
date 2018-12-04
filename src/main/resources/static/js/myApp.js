@@ -18,7 +18,16 @@ $(document)
 						$('#att_teacher').addClass('active');
 						break;
 					}
-
+					case 'Profile': 
+						{
+						 $('#navbarDropdown').addClass('active');
+						 break;
+						}
+					case 'Add User': 
+					{
+					 $('#navbarDropdown').addClass('active');
+					 break;
+					}
 					default: {
 						$('#home').addClass('active');
 						break;

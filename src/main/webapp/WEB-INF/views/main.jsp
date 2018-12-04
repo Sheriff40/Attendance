@@ -94,7 +94,12 @@
 		<c:if test = "${UserClickEditClass == true }">
 			<%@include file="EditClass.jsp"%>
 		</c:if>
-		
+		<c:if test="${UserClickAddUser == true }">
+			<%@include file = "addUserForm.jsp" %>
+		</c:if>
+		<c:if test="${UserClickProfile == true }">
+			<%@include file = "showUser.jsp" %>
+		</c:if>
 	</div>
 	
 	<div class = "footer">

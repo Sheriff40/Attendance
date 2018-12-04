@@ -51,13 +51,13 @@
 					<div class="float">
 						<form class="form" action="${SITE_URL}/login" method="POST">
 							<div class="form-group">
-								<label for="username" class="text-white">Username:</label><br>
-								<input type="text" name="username" id="username"
+								<label for="username" class="text-white">Email:</label><br>
+								<input type="text" name="email" id="email"
 									class="form-control">
 							</div>
 							<div class="form-group">
 								<label for="password" class="text-white">Password:</label><br>
-								<input type="text" name="password" id="password"
+								<input type="password" name="password" id="password"
 									class="form-control">
 							</div>
 
@@ -70,6 +70,7 @@
 				</div>
 			</div>
 		</div>
+		
 	</div>
 	<script type="text/javascript" src="${SITE_URL}/js/code.jquery.com.js"></script>
 	<script type="text/javascript" src="${SITE_URL}/js/bootstrap.min.js"></script>

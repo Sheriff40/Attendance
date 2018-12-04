@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
 	<a class="navbar-brand" href="${SITE_URL}/home">Attendance</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -105,7 +105,7 @@
 					});
 				</script></li>
 
-			<security:authorize access="hasRole('admin')">
+			<security:authorize access="hasAuthority('admin')">
 				<li class="nav-item"><a class="nav-link"
 					href="${SITE_URL}/admin/show/teacher" id="att_teacher">Teacher
 						Attendance</a></li>
@@ -130,7 +130,7 @@
 							href="${SITE_URL}/user/student/get?name=${item.name}">${item.name}</a>
 					</c:forEach>
 
-					<security:authorize access="hasRole('admin')">
+					<security:authorize access="hasAuthority('admin')">
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" id="addClass"
 							href="${SITE_URL}/admin/show/classes">Show/Add New Class</a>
@@ -144,8 +144,10 @@
 				role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"> User Name </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="#">Profile</a> <a
-						class="dropdown-item" href="#">Another action</a>
+					<a class="dropdown-item" href="${SITE_URL}/user/show/session">Profile</a> 
+					<security:authorize access="hasAuthority('admin')"> 
+						<a class="dropdown-item" href="${SITE_URL}/admin/add/user/form">Add new User</a>
+					</security:authorize>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="${SITE_URL}/logout">Logout</a>
 				</div></li>

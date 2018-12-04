@@ -1,5 +1,8 @@
 package org.ocean.config;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -7,7 +10,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -42,8 +44,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 // 		auth.inMemoryAuthentication().withUser("ssh").password(encoder.encode("123")).roles("USER") ;
 // 	}
 
+	
+	@Autowired
+	private DataSource dataSource;
+	
 	@Bean
-	public PasswordEncoder passEncoder()
+	public PasswordEncoder passwordEncoder()
 	{
 		return new BCryptPasswordEncoder();
 	}     
@@ -54,6 +60,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring().antMatchers("/css/**","/js/**","/images/**");
 	}
 	
+	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception
+	{
+		auth.
+			jdbcAuthentication()
+			.usersByUsernameQuery("SELECT email,password,active FROM USER WHERE email = ?")
+			.authoritiesByUsernameQuery("SELECT email,role FROM USER WHERE email = ?")
+			.dataSource(dataSource)
+			.passwordEncoder(passwordEncoder());
+	}
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 	
@@ -61,8 +79,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.
 		authorizeRequests().
 			
-			antMatchers("/admin/**").hasRole("admin").
-			antMatchers("/user/**").hasAnyRole("user","admin").
+			antMatchers("/admin/**").hasAuthority("admin").
+			antMatchers("/user/**").hasAnyAuthority("admin","user").
 			antMatchers("/login").permitAll().
 			antMatchers("/home").authenticated().
 			and().
@@ -70,18 +88,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			loginProcessingUrl("/login").
 			defaultSuccessUrl("/home",true).
 			failureUrl("/login?success=false").
-			and().logout().logoutSuccessUrl("/login?logout=success");
+			usernameParameter("email").
+			passwordParameter("password").
+			and().logout().logoutSuccessUrl("/login?logout=success").
+			and().
+			exceptionHandling().accessDeniedPage("/403-UnauthorizedAccess")
 			;
 		
 		http.csrf().disable();
 	}
  	
-	@Override
-	public void configure(AuthenticationManagerBuilder auth) throws Exception
-	{
-		auth.inMemoryAuthentication().withUser("Principle").password(passEncoder().encode("123")).roles("admin").and()
-		.withUser("Teacher").password(passEncoder().encode("456")).roles("user");
-	}
+	
+	
 
 //	@Override
 //	public void configure(AuthenticationManagerBuilder auth) throws Exception
