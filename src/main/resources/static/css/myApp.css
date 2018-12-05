@@ -3,7 +3,11 @@
 	color : red;
 }
 
-
+.error_message
+{
+	color : red;
+	font-style: italic;
+}
 
 
 .footer

@@ -13,7 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -44,16 +47,29 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping("/admin/save/user")
+	@PostMapping("/user/save/user")
 	public String saveUser(@ModelAttribute("user")User user)
 	{
-		String encodedPass = passwordEncoder().encode(user.getPassword());
-		user.setPassword(encodedPass);
-		user.setActive(true);
+		int userId = user.getId();
+		if(userId == 0)
+		{
+			String encodedPass = passwordEncoder().encode(user.getPassword());
+			user.setPassword(encodedPass);
+			user.setActive(true);
+		}
 		try
 		{
 			userDAO.save(user);
-			return "redirect:/admin/add/user/form";
+			if(userId ==0)
+			{
+				return "redirect:/admin/add/user/form";
+				
+			}
+			else
+			{
+				return "redirect:/user/show/session";
+			}
+			
 		}
 		catch(Exception ex)
 		{
@@ -84,6 +100,45 @@ public class UserController {
 		mv.addObject("title", "Profile");
 		mv.addObject("user", user);
 		return mv;
+		
+	}
+	
+	@PostMapping("/user/change-password")
+	
+	public String changePassword(@RequestParam("password") String password,Model model)
+	{
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userDAO.findByEmail(auth.getName());
+		if(passwordEncoder().matches(password, user.getPassword()))
+		{
+			model.addAttribute("UserClickChangePassword", true);
+			model.addAttribute("title","Change Password");
+			return "main";
+		}
+		else
+		{
+			model.addAttribute("heading", "Error");
+			model.addAttribute("message", "The passwords do not match");
+			return "Error";
+		}
+	}
+	
+	@PostMapping(value = "/user/new/password")
+	public String newPassword(@RequestParam("password") String password)
+	{
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userDAO.findByEmail(auth.getName());
+		user.setPassword(passwordEncoder().encode(password));
+		try
+		{
+			userDAO.save(user);
+			return "redirect:/user/show/session";
+		}
+		catch(Exception ex)
+		{
+			return ex.toString();
+		}
 		
 	}
 	

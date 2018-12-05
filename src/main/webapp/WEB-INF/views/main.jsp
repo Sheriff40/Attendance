@@ -100,6 +100,10 @@
 		<c:if test="${UserClickProfile == true }">
 			<%@include file = "showUser.jsp" %>
 		</c:if>
+		<c:if test="${UserClickChangePassword == true }">
+			<%@include file = "changePassword.jsp" %>
+		</c:if>
+		
 	</div>
 	
 	<div class = "footer">

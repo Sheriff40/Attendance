@@ -1,7 +1,7 @@
 
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <div class="text-center">
-	<h1>${user.fname} ${user.lname }</h1>
+	<h1>${user.fname} ${user.lname}</h1>
 </div>
 <br>
 <table class="table table-bordered">
@@ -24,15 +24,14 @@
 		</tr>
 		<tr>
 			<td>Password</td>
-			<td>****</td>
+			<td>******** <button class="btn btn-default fa fa-exchange-alt" id = "btnChange"> Change</button></td>
 		</tr>
 	</tbody>
 	
 </table>
-<a href="${SITE_URL}/home" class="btn btn-danger fa fa-caret-left"> Back</a>
-<button class="btn btn-default btn-sm" id = "userEdit" disabled> Change?</button>
+<button class="btn btn-danger fa fa-edit" id = "userEdit" > Edit</button>
 
-<!-- Modal -->
+<!-- Modal For adding new user -->
 <div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -43,7 +42,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <sf:form modelAttribute="user" action="${SITE_URL}/admin/save/user"
+        <sf:form modelAttribute="user" action="${SITE_URL}/user/save/user"
 			method="POST" >
 			<div class="form-group">
 				<label class="control-label">Email</label>
@@ -61,26 +60,11 @@
 				<label class="control-label">Number</label>
 				<sf:input type="text" class="form-control" path="number" id="number" />
 			</div>
-			<div class="form-group">
-				<label class="control-label">Password</label>
-				<sf:input type="password" class="form-control" path="password"
-					id="password" />
-			</div>
-			<div class="form-group">
-				<label class="control-label">Role</label>
-				<sf:select path="role" class="form-control">
-					<option value="admin">Admin</option>
-					<option value="user">User</option>
-				</sf:select>
-			</div>
+
 			<sf:input type = "hidden" path="id" />
 			<button type="submit" name="submit" class="btn btn-danger fa fa-save">
 				Save</button>
 		</sf:form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -95,4 +79,38 @@
 		
 		
 	})
+</script>
+
+
+<!-- Modal For Confirm Password-->
+<div class="modal fade" id="confirmPasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="${SITE_URL}/user/change-password"
+			method="POST" >
+			<div class="form-group">
+				<label class="control-label">Old Password</label>
+				<input type="password" class="form-control" name = "password" />
+			</div>
+			<button type="submit" name="submit" class="btn btn-danger">
+				Send</button>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+		$(document).ready(function(){
+			var changeBtn = $("#btnChange");
+			changeBtn.on('click',function(){
+				$("#confirmPasswordModal").modal();
+			})
+		})
 </script>

@@ -14,7 +14,7 @@
 <div class="row">
 
 	<div class="col-md-4">
-		<sf:form modelAttribute="user" action="${SITE_URL}/admin/save/user"
+		<sf:form modelAttribute="user" action="${SITE_URL}/user/save/user"
 			method="POST" style = "border:5px solid black; padding: 10px; border-radius : 10px;background:lightblue;">
 			<div class="form-group">
 				<label class="control-label">Email</label>
