@@ -79,6 +79,7 @@
 												</c:forEach>
 											</select>
 										</div>
+										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 										<button type="submit" class="btn fa fa-search"
 											style="border-radius: 50px; background: #34B48D; color: white;">
 											Search</button>
@@ -142,7 +143,7 @@
 			<li class="nav-item dropdown pull-right"><a
 				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"> User Name </a>
+				aria-expanded="false"> ${userName} </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="${SITE_URL}/user/show/session">Profile</a> 
 					<security:authorize access="hasAuthority('admin')"> 

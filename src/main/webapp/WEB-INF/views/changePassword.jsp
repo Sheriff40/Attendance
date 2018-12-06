@@ -14,6 +14,7 @@
 			<input type="password" id="confirmPass" class="form-control" name = "confirmPassword"/>
 			<div id = "confirmPassword_error" class="error_message"></div>
 			</div>
+			<input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token}"/>
 			<a href = "${SITE_URL}/user/show/session" class="btn btn-primary fa fa-caret-left">
 				Back</a>
 			<button type="submit" name="submit" class="btn btn-danger fa fa-save">

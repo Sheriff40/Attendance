@@ -1,5 +1,11 @@
 package org.ocean.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +22,23 @@ public class LoginController {
 		
 		ModelAndView mv = new ModelAndView("loginPage");
 		mv.addObject("success",success);
-		mv.addObject("logout",logout);
+		if(logout != null)
+		{
+			mv.addObject("logout","User has been successfully Logged Out");
+		}
 		return mv;
+	}
+	
+	@RequestMapping(value = "/logout",method = RequestMethod.GET)
+	public String logout(HttpServletRequest request, HttpServletResponse response)
+	{
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth!= null)
+		{
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+			
+		}
+		return "redirect:login?logout";
 	}
 	
 	@RequestMapping(value = "/403-UnauthorizedAccess",method = RequestMethod.GET)

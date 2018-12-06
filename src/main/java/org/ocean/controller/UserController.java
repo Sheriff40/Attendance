@@ -144,7 +144,9 @@ public class UserController {
 	@ModelAttribute
 	public void getClasses(Model model)
 	{
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		model.addAttribute("ClassList",classDAO.findAll());
+		model.addAttribute("userName", auth.getName());
 	}
 	
 }

@@ -9,6 +9,8 @@ import org.ocean.dto.Attendance;
 import org.ocean.dto.Student;
 import org.ocean.dto.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -147,7 +149,9 @@ public class AttendenceController {
 	@ModelAttribute
 	public void getClasses(Model model)
 	{
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		model.addAttribute("ClassList",classDAO.findAll());
+		model.addAttribute("userName", auth.getName());
 	}
 	
 }

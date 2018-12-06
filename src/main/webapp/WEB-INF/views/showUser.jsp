@@ -99,6 +99,7 @@
 				<label class="control-label">Old Password</label>
 				<input type="password" class="form-control" name = "password" />
 			</div>
+			<input type="hidden" name="${_csrf.parameterName}" value = "${_csrf.token}"/> 
 			<button type="submit" name="submit" class="btn btn-danger">
 				Send</button>
 		</form>

@@ -2,6 +2,16 @@ $(document)
 		.ready(
 				function() {
 
+					
+					var token = $("meta[name='_csrf']").attr("content");
+					var header = $("meta[name='_csrf_header']").attr("content");
+					 
+					$(document).ajaxSend(function(e, xhr, options) {
+					    xhr.setRequestHeader(header, token);
+					});
+					
+				
+					
 					var menu = window.menu;
 
 					switch (menu) {
@@ -42,8 +52,8 @@ $(document)
 
 						table
 								.DataTable({
-									lengthMenu : [ [ 3, 5, 10, -1 ],
-											[ "Three", "Five", "Ten", "All" ] ],
+									lengthMenu : [ [  5, 10 , 15, -1 ],
+											["Five", "Ten" , "Fifteen" , "All" ] ],
 									ajax : {
 										url : json,
 										dataSrc : ''
@@ -681,7 +691,7 @@ $(document)
 						})
 					}
 						
-				
+			
 					
 					
 				});

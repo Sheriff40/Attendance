@@ -33,6 +33,7 @@
 										<input class = 'form-control' type='date' name = 'date'/>
 										
 									</div>
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 									<button type="submit" class="btn fa fa-search" style = "border-radius:50px;background:#34B48D;color:white;"> Search</button>
 									
 								

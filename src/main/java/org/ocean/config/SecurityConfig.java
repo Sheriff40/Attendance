@@ -82,7 +82,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			antMatchers("/admin/**").hasAuthority("admin").
 			antMatchers("/user/**").hasAnyAuthority("admin","user").
 			antMatchers("/login").permitAll().
-			antMatchers("/home").authenticated().
+			anyRequest().authenticated().
 			and().
 			formLogin().loginPage("/login").
 			loginProcessingUrl("/login").
@@ -94,8 +94,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			and().
 			exceptionHandling().accessDeniedPage("/403-UnauthorizedAccess")
 			;
-		
-		http.csrf().disable();
 	}
  	
 	

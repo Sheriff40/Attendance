@@ -2,6 +2,9 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+
 <c:set var="SITE_URL" value="${pageContext.request.contextPath}"></c:set>
 
 <!DOCTYPE html>
@@ -27,11 +30,11 @@
 			</div>
 		</c:if>
 
-		<c:if test="${logout == 'success'}">
+		<c:if test="${not empty logout}">
 			<div class="alert alert-success alert-dismissible"
 				style="margin: 20px;">
 				<a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					User has been logged out successfully
+					${logout }
 			</div>
 		</c:if>
 
@@ -60,18 +63,20 @@
 								<input type="password" name="password" id="password"
 									class="form-control">
 							</div>
-
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 							<div class="form-group">
 								<input type="submit" name="submit" class="btn btn-default"
 									value="Submit">
 							</div>
+							
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+		<security:csrfInput/>
 	</div>
+	
 	<script type="text/javascript" src="${SITE_URL}/js/code.jquery.com.js"></script>
 	<script type="text/javascript" src="${SITE_URL}/js/bootstrap.min.js"></script>
 </body>
