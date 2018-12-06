@@ -1,6 +1,8 @@
 package org.ocean.dto;
 
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Student {
@@ -31,8 +33,8 @@ public class Student {
 	@ManyToOne
 	private Classes stdClass;
 	
-	@OneToOne(mappedBy = "student",cascade = CascadeType.REMOVE)
-	private Attendance attendance;
+	@OneToMany(mappedBy = "student",cascade = CascadeType.REMOVE)
+	private List<Attendance> attendance;
 	
 	@Column(name = "total_present_day")
 	private int totalPresentDay = 0;

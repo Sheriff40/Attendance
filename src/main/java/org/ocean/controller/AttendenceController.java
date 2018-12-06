@@ -74,7 +74,7 @@ public class AttendenceController {
 		Student std = dao.getById(id);
 		Attendance att = new Attendance();
 		
-		LocalDate date1 = LocalDate.parse("2018-11-15");
+		LocalDate date1 = LocalDate.now();
 		LocalDate date2 = date1.plusDays(1);
 		if(!(attendanceDAO.searchByDateAndStudentId(id, date1, date2)==null))
 		{

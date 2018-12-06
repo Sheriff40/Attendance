@@ -65,7 +65,7 @@
       <div class="modal-body">
       			<sf:form method = "POST" modelAttribute="teacher" id = "teacherForm" action = "${SITE_URL}/admin/add/teacher">
       				<div class="form-group">
-      					<label class="label-control">Id</label>
+      					<label class="label-control">Staff Id</label>
       					<sf:input path = 'staffId' type = "text" class="form-control" />
       				</div>
       				<div class="form-group">

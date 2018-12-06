@@ -7,7 +7,7 @@
 	</script>
 	
 	<div class="text-center"><strong>Date: </strong>  " ${date} "</div>
-	
+	<div class="text-center"><strong>Class: </strong>  " ${name} "</div>
 	<br>
 		<table class="table table-hover" border = "1" id = "attendanceTable" width = "80%">
 			<thead class="thead-dark">

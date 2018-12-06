@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Attendance {
@@ -18,7 +18,7 @@ public class Attendance {
 	private int id;
 	private LocalDate date;
 	
-	@OneToOne
+	@ManyToOne
 	private Student student;
 	
 	@Column(name = "stdClass_id")
@@ -41,11 +41,6 @@ public class Attendance {
 	}
 	
 	
-	
-
-
-	
-
 
 	public int getStdClassId() {
 		return stdClassId;
